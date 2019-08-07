@@ -9,8 +9,24 @@ namespace QuickBuy.Dominio.Entidades
 
         public int UsuarioId { get; set; }
 
+        public int FormaPagamentoId { get; set; }
+
+        public FormaPagamento FormaPagamento { get; set; }
+
         public DateTime DataPedido { get; set; }
 
         public ICollection<ItemPedido> ItensPedido { get; set; }
+
+        public DateTime DataPrevisaoEntrega { get; set; }
+
+        public string CEP { get; set; }
+
+        public string Cidade { get; set; }
+        
+        public string UF { get; set; }
+
+        public string Endereco { get; set; }
+
+        public string NumeroEndereco { get; set; }
     }
 }
