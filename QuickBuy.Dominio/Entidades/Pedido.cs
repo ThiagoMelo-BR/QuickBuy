@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace QuickBuy.Dominio.Entidades
 {
-    public class Pedido
+    public class Pedido : Entidade
     {
         public int Id { get; set; }
 
@@ -28,5 +29,16 @@ namespace QuickBuy.Dominio.Entidades
         public string Endereco { get; set; }
 
         public string NumeroEndereco { get; set; }
+
+        public override void Validate()
+        {
+            LimparLista();
+
+            if (!ItensPedido.Any())            
+                MensagemValidacao.Add("Erro: Pedido sem itens válidos");
+
+            if (string.IsNullOrEmpty(CEP))
+                MensagemValidacao.Add("Erro: O campo CEP deve ser preenchido");
+        }
     }
 }
