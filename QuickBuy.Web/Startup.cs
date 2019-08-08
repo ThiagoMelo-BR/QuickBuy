@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuickBuy.Repositorio.Contexto;
 
 namespace QuickBuy.Web
 {
@@ -27,6 +29,13 @@ namespace QuickBuy.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            //String de conexão do banco
+            string connectionStrings = Configuration.GetConnectionString("Default");
+
+            //Adicionando o serviço de conexão com o oracle
+            services.AddDbContext<QuickBuyContexto>(options => options.UseOracle(connectionStrings,
+                m => m.MigrationsAssembly("QuickBuy.Repositorio")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
