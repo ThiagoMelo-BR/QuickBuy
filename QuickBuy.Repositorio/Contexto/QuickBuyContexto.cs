@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuickBuy.Dominio.Entidades;
+using QuickBuy.Repositorio.Config;
 
 namespace QuickBuy.Repositorio.Contexto
 {
@@ -14,5 +15,15 @@ namespace QuickBuy.Repositorio.Contexto
         public DbSet<ItemPedido> ItensPedido { get; set; }
 
         public DbSet<FormaPagamento> FormasPagamentos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
+            modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
+            modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
+            modelBuilder.ApplyConfiguration(new PedidoConfiguration());
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
