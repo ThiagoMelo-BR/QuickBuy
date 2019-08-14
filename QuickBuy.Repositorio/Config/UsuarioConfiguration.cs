@@ -8,8 +8,14 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            //throw new System.NotImplementedException();
-            //builder.HasKey
+            builder.HasKey(u => u.Id);
+            builder.Property(u => u.Nome).IsRequired().HasMaxLength(50);
+            builder.Property(u => u.Email).IsRequired().HasMaxLength(50).HasColumnType("nvarchar");
+
+            //Relacionamento de dados
+            //Um usuário pode ter vários pedidos, mas um pedido pode ter apenas um único usuário
+            builder.HasMany(u => u.Pedidos).WithOne(p => p.Usuario);
+            
         }
     }
 }

@@ -8,7 +8,16 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
-            throw new System.NotImplementedException();
+            builder.HasKey(p => p.Id);
+
+            builder.Property(p => p.ItensPedido).IsRequired();
+            builder.Property(p => p.UsuarioId).IsRequired();
+            builder.Property(p => p.DataPedido).IsRequired();
+            builder.Property(p => p.Endereco).IsRequired().HasMaxLength(100);
+            builder.Property(p => p.FormaPagamentoId).IsRequired();
+
+            //Um pedido pode ter vários itens, uma lista de pedidos pode ter apenas um pedido
+            builder.HasMany(p => p.ItensPedido).WithOne(i => i.Pedido);
         }
     }
 }

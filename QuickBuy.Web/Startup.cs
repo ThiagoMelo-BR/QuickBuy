@@ -33,8 +33,11 @@ namespace QuickBuy.Web
             string connectionStrings = Configuration.GetConnectionString("Default");
 
             //Adicionando o serviço de conexão com o oracle
-            services.AddDbContext<QuickBuyContexto>(options => options.UseOracle(connectionStrings,
-                m => m.MigrationsAssembly("QuickBuy.Repositorio")));
+            services.AddDbContext<QuickBuyContexto>(options => 
+                                                        //Permite o carregamento automático das entidades relacionadas
+                                                        options.UseLazyLoadingProxies()
+                                                        .UseOracle(connectionStrings,
+                                                            m => m.MigrationsAssembly("QuickBuy.Repositorio")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

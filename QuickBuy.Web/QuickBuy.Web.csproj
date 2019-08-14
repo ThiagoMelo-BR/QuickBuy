@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QuickBuy.Dominio\QuickBuy.Dominio.csproj" />
     <ProjectReference Include="..\QuickBuy.Repositorio\QuickBuy.Repositorio.csproj" />
   </ItemGroup>
 
