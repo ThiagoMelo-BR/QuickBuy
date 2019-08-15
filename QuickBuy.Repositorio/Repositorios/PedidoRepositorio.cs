@@ -4,9 +4,9 @@ using QuickBuy.Repositorio.Contexto;
 
 namespace QuickBuy.Repositorio.Repositorios
 {
-    public class UsuarioRepositorio : BaseRepositorio<Usuario>, IUsuarioRepositorio
+    public class PedidoRepositorio : BaseRepositorio<Pedido>, IPedidoRepositorio
     {
-        public UsuarioRepositorio(QuickBuyContexto quickBuyContexto) : base(quickBuyContexto)
+        public PedidoRepositorio(QuickBuyContexto quickBuyContexto) : base(quickBuyContexto)
         {
         }
     }
