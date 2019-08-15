@@ -10,9 +10,10 @@ namespace QuickBuy.Repositorio.Config
         {
             builder.HasKey(p => p.Id);
 
-            builder.Property(p => p.ItensPedido).IsRequired();
+            
             builder.Property(p => p.UsuarioId).IsRequired();
-            builder.Property(p => p.DataPedido).IsRequired();
+            builder.Property(p => p.DataPedido).IsRequired().HasColumnType("Date");
+            builder.Property(p => p.DataPrevisaoEntrega).HasColumnType("Date");
             builder.Property(p => p.Endereco).IsRequired().HasMaxLength(100);
             builder.Property(p => p.FormaPagamentoId).IsRequired();
 

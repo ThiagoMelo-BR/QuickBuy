@@ -14,7 +14,7 @@ namespace QuickBuy.Dominio.Entidades
 
         public int FormaPagamentoId { get; set; }
 
-        public FormaPagamento FormaPagamento { get; set; }
+        public virtual FormaPagamento FormaPagamento { get; set; }
 
         public DateTime DataPedido { get; set; }
 

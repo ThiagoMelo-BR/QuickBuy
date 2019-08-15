@@ -1,0 +1,103 @@
+﻿select * from "FormasPagamentos" for update;
+
+create sequence DEFSEQ_FormasPagamentos
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 1
+increment by 1
+nocache;
+
+CREATE OR REPLACE TRIGGER "Seq_FormasPagamentos"
+   BEFORE INSERT
+   ON "FormasPagamentos"
+   REFERENCING NEW AS NEW
+   FOR EACH ROW
+
+BEGIN
+   :NEW."Id" := DEFSEQ_FormasPagamentos.nextval;
+
+END;
+
+select * from "Produtos" for update;
+
+create sequence DEFSEQ_Produtos
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 1
+increment by 1
+nocache;
+
+CREATE OR REPLACE TRIGGER "Seq_Produtos"
+   BEFORE INSERT
+   ON "Produtos"
+   REFERENCING NEW AS NEW
+   FOR EACH ROW
+
+BEGIN
+   :NEW."Id" := DEFSEQ_Produtos.nextval;
+
+END;
+
+select * from "Usuarios" for update;
+
+create sequence DEFSEQ_Usuarios
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 1
+increment by 1
+nocache;
+
+
+CREATE OR REPLACE TRIGGER "Seq_Usuarios"
+   BEFORE INSERT
+   ON "Usuarios"
+   REFERENCING NEW AS NEW
+   FOR EACH ROW
+
+BEGIN
+   :NEW."Id" := DEFSEQ_Usuarios.nextval;
+
+END;
+
+select * from "Pedidos" for update;
+
+create sequence DEFSEQ_Pedidos
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 1
+increment by 1
+nocache;
+
+
+CREATE OR REPLACE TRIGGER "Seq_Pedidos"
+   BEFORE INSERT
+   ON "Pedidos"
+   REFERENCING NEW AS NEW
+   FOR EACH ROW
+
+BEGIN
+   :NEW."Id" := DEFSEQ_Pedidos.nextval;
+
+END;
+
+
+select * from "ItensPedido" for update;
+
+create sequence DEFSEQ_ItensPedido
+minvalue 1
+maxvalue 999999999999999999999999999
+start with 1
+increment by 1
+nocache;
+
+
+CREATE OR REPLACE TRIGGER "Seq_ItensPedido"
+   BEFORE INSERT
+   ON "ItensPedido"
+   REFERENCING NEW AS NEW
+   FOR EACH ROW
+
+BEGIN
+   :NEW."Id" := DEFSEQ_ItensPedido.nextval;
+
+END;
