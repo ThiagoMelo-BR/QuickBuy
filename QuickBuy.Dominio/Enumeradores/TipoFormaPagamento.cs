@@ -2,9 +2,9 @@
 {
     public enum TipoFormaPagamento
     {
-        NaoDefinido = 0,
-        Boleto = 1,
-        Cartao = 2,
-        Transferencia = 3
+        NaoDefinido = 1,
+        Avista = 2,
+        Cartao = 3,
+        Transferencia = 4
     }
 }

@@ -25,6 +25,7 @@ namespace QuickBuy.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new PedidoConfiguration());
 
             base.OnModelCreating(modelBuilder);
+
         }
 
         public QuickBuyContexto(DbContextOptions options) : base(options)

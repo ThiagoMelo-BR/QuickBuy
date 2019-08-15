@@ -14,6 +14,11 @@ namespace QuickBuy.Dominio.Entidades
             get { return Id == (int)TipoFormaPagamento.NaoDefinido; }
         }
 
+        public bool EhAVista
+        {
+            get { return Id == (int)TipoFormaPagamento.Cartao; }
+        }
+
         public bool EhCartao
         {
             get { return Id == (int)TipoFormaPagamento.Cartao; }
