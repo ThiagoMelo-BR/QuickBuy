@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuickBuy.Dominio.Contratos;
 using QuickBuy.Repositorio.Contexto;
+using QuickBuy.Repositorio.Repositorios;
 
 namespace QuickBuy.Web
 {
@@ -38,6 +40,10 @@ namespace QuickBuy.Web
                                                         options.UseLazyLoadingProxies()
                                                             .UseOracle(connectionStrings,
                                                                 m => m.MigrationsAssembly("QuickBuy.Repositorio")));
+
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            services.AddScoped<IPedidoRepositorio,PedidoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
