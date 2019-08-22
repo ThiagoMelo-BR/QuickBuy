@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\model\usuario.ts" />
     <None Remove="ClientApp\src\app\produto\produto.component.ts" />
     <None Remove="ClientApp\src\app\usuario\login\login.component.ts" />
   </ItemGroup>
@@ -35,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\model\usuario.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\produto\produto.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\usuario\login\login.component.ts" />
   </ItemGroup>

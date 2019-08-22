@@ -1,10 +1,20 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<form class="form-signin">
 
-</body>
-</html>
+  <img class="mb-4" src="../../../assets/Imagens/bootstrap-solid.svg" alt="" width="72" height="72">
+
+  <h1 class="h3 mb-3 font-weight-normal">Login do cliente</h1>
+
+  <label for="inputEmail" class="sr-only">Email</label>
+  <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" [(ngModel)]="usuario.email" />
+
+  <label for="inputPassword" class="sr-only">Senha</label>
+  <input type="password" id="inputSenha" name="senha" class="form-control" placeholder="Senha" [(ngModel)]="usuario.senha" />
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="entrar()">Entrar</button>
+
+  <div class="alert alert-primary" role="alert" *ngIf="usuarioAutenticado">
+    Usuário autenticado!
+  </div>
+
+
+</form>

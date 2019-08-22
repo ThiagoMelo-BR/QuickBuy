@@ -1,2 +1,15 @@
-﻿body {
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
 }
+
+img {
+  vertical-align: middle;
+  border-style: none;
+  text-align: center;
+  width: 72px;
+  height: 72px;
+}
+
