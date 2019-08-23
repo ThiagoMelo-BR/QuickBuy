@@ -5,9 +5,20 @@
   <h1 class="h3 mb-3 font-weight-normal">Login do cliente</h1>
 
   <label for="inputEmail" class="sr-only">Email</label>
-  <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" [(ngModel)]="usuario.email" #email="ngModel" email required/>
+  <input type="email"
+         id="inputEmail"
+         name="email"
+         #email="ngModel"
+         class="form-control mb-2"
+         [ngClass]="{
+         'is-invalid':email.invalid && (email.dirty || email.touched),
+         'is-valid':email.valid && (email.dirty || email.touched)
+         }"
+         placeholder="Email"
+         [(ngModel)]="usuario.email"
+         email required />
 
-  <div class="alert alert-danger" role="alert" *ngIf="email.invalid && (email.dirty || email.touched)">
+  <div class="invalid-feedback m-2" role="alert" *ngIf="email.invalid && (email.dirty || email.touched)">
     <div *ngIf="email.errors.required">
       Email deve ser preechido
     </div>
@@ -17,16 +28,28 @@
   </div>
 
   <label for="inputPassword" class="sr-only">Senha</label>
-  <input type="password" id="inputSenha" name="senha" class="form-control" placeholder="Senha" [(ngModel)]="usuario.senha" #senha="ngModel" required/>
+  <input type="password"
+         id="inputSenha"
+         name="senha"
+         #senha="ngModel"
+         class="form-control mb-2"
+         [ngClass]="{
+         'is-invalid':senha.invalid && (senha.dirty || senha.touched),
+         'is-valid': senha.valid && (senha.dirty || senha.touched)
+         }"
+         placeholder="Senha"
+         [(ngModel)]="usuario.senha"
+         required />
 
-  <div class="alert alert-danger" role="alert" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+  <div class="invalid-feedback mb-2" role="alert" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
     <div *ngIf="senha.errors.required">
       Senha deve ser preenchida
     </div>
   </div>
 
-  <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="entrar()">Entrar</button>
+  <button class="btn btn-lg btn-primary btn-block mb-2" type="submit" (click)="entrar()">Entrar</button>
 
+  <!--
   <div class="alert alert-primary" role="alert" *ngIf="usuarioAutenticado">
     Usuário autenticado!
   </div>
@@ -36,5 +59,6 @@
       {{ us }}
     </div>
   </div>
+  -->
 
 </form>
