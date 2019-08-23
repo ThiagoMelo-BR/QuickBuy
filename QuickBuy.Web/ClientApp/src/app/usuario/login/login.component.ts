@@ -11,6 +11,7 @@ import { Usuario } from "../../model/usuario";
 export class LoginComponent{
   public usuario;
   public usuarioAutenticado: boolean;
+  public usuarios = ["thiago", "rosi", "ana clara", "iolanda"];
 
   constructor() {
     this.usuario = new Usuario();

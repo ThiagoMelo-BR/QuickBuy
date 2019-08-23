@@ -5,10 +5,25 @@
   <h1 class="h3 mb-3 font-weight-normal">Login do cliente</h1>
 
   <label for="inputEmail" class="sr-only">Email</label>
-  <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" [(ngModel)]="usuario.email" />
+  <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" [(ngModel)]="usuario.email" #email="ngModel" email required/>
+
+  <div class="alert alert-danger" role="alert" *ngIf="email.invalid && (email.dirty || email.touched)">
+    <div *ngIf="email.errors.required">
+      Email deve ser preechido
+    </div>
+    <div *ngIf="email.errors.email">
+      Email no formato inválido!
+    </div>
+  </div>
 
   <label for="inputPassword" class="sr-only">Senha</label>
-  <input type="password" id="inputSenha" name="senha" class="form-control" placeholder="Senha" [(ngModel)]="usuario.senha" />
+  <input type="password" id="inputSenha" name="senha" class="form-control" placeholder="Senha" [(ngModel)]="usuario.senha" #senha="ngModel" required/>
+
+  <div class="alert alert-danger" role="alert" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+    <div *ngIf="senha.errors.required">
+      Senha deve ser preenchida
+    </div>
+  </div>
 
   <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="entrar()">Entrar</button>
 
@@ -16,5 +31,10 @@
     Usuário autenticado!
   </div>
 
+  <div class="alert alert-primary" role="alert">
+    <div *ngFor="let us of usuarios">
+      {{ us }}
+    </div>
+  </div>
 
 </form>
