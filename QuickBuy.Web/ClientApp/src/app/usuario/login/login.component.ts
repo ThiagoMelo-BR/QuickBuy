@@ -10,8 +10,6 @@ import { Router } from "@angular/router";
 
 export class LoginComponent{
   public usuario;
-  public usuarioAutenticado: boolean;
-  public usuarios = ["thiago", "rosi", "ana clara", "iolanda"];
 
   constructor(private router: Router) {
     this.usuario = new Usuario();
@@ -19,11 +17,11 @@ export class LoginComponent{
 
   entrar(): void {
     if (this.usuario.email == "thiago@123" && this.usuario.senha == "123") {
-      localStorage.setItem("usuario-autenticado", "1");
+      sessionStorage.setItem("usuario-autenticado", "1");
       this.router.navigate(["/"]);
     }
     else {
-      localStorage.setItem("usuario-autenticado", "2");
+      localStorage.setItem("usuario-autenticado", "");
     }
   }
 
