@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Usuario } from "../../model/usuario";
-
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -13,16 +13,18 @@ export class LoginComponent{
   public usuarioAutenticado: boolean;
   public usuarios = ["thiago", "rosi", "ana clara", "iolanda"];
 
-  constructor() {
+  constructor(private router: Router) {
     this.usuario = new Usuario();
 }
 
   entrar(): void {
     if (this.usuario.email == "thiago@123" && this.usuario.senha == "123") {
-      this.usuarioAutenticado = true;
+      localStorage.setItem("usuario-autenticado", "1");
+      this.router.navigate(["/"]);
     }
-    else
-      this.usuarioAutenticado = false;
+    else {
+      localStorage.setItem("usuario-autenticado", "2");
+    }
   }
 
 }
