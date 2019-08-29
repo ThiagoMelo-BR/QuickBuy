@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Usuario } from "../../model/usuario";
 import { Router, ActivatedRoute } from "@angular/router";
+import { UsuarioServico } from "../../servico/usuario/usuario.servico";
 
 @Component({
   selector: "app-login",
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   public usuario;
   public returnUrl: string;
 
-  constructor(private router: Router, private activateRouter: ActivatedRoute) {
+  constructor(private router: Router, private activateRouter: ActivatedRoute, private usuarioServico: UsuarioServico) {
     //Boa prática deixar apenas os objetos que podem ser injetados
   }
 
@@ -24,14 +25,19 @@ export class LoginComponent implements OnInit {
   }
 
   entrar(): void {
+
+    this.usuarioServico.verificarUsuario(this.usuario).subscribe(
+      data => {
+
+      },
+      erro => {
+
+      }
+    )
+
     if (this.usuario.email == "thiago@123" && this.usuario.senha == "123") {
-      sessionStorage.setItem("usuario-autenticado", "1");      
-      if (this.returnUrl !== "undefined") {        
-        this.router.navigate([this.returnUrl]);
-      }
-      else {        
-        this.router.navigate(["/"]);
-      }
+      sessionStorage.setItem("usuario-autenticado", "1");                  
+      this.router.navigate([this.returnUrl]);     
     }
     else {
       localStorage.setItem("usuario-autenticado", "");

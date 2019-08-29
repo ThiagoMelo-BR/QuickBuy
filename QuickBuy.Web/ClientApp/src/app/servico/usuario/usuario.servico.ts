@@ -22,7 +22,7 @@ export class UsuarioServico {
     }
 
     //this.baseURL = raiz do site
-    return this.http.post<Usuario>(this.baseURL, body, { headers });
+    return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
   }
 
 }
