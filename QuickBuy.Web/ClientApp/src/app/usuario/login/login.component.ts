@@ -12,9 +12,12 @@ import { UsuarioServico } from "../../servico/usuario/usuario.servico";
 export class LoginComponent implements OnInit {
 
   public usuario;
-  public returnUrl: string;
+  public returnUrl: string;  
+  public mensagem: string;
 
-  constructor(private router: Router, private activateRouter: ActivatedRoute, private usuarioServico: UsuarioServico) {
+  constructor(private router: Router,
+    private activateRouter: ActivatedRoute,
+    private usuarioServico: UsuarioServico) {
     //Boa prática deixar apenas os objetos que podem ser injetados
   }
 
@@ -27,21 +30,21 @@ export class LoginComponent implements OnInit {
   entrar(): void {
 
     this.usuarioServico.verificarUsuario(this.usuario).subscribe(
-      data => {
+      usuario_json => {
+        this.usuarioServico.usuario = usuario_json;
+
+        if (this.returnUrl == null){
+          this.router.navigate(['/']);         
+        }
+        else
+          this.router.navigate([this.returnUrl]);
 
       },
       erro => {
-
+        localStorage.setItem("usuario-autenticado", "");        
+        this.mensagem = erro.error;
       }
-    )
-
-    if (this.usuario.email == "thiago@123" && this.usuario.senha == "123") {
-      sessionStorage.setItem("usuario-autenticado", "1");                  
-      this.router.navigate([this.returnUrl]);     
-    }
-    else {
-      localStorage.setItem("usuario-autenticado", "");
-    }
+    )   
   }
 
 }

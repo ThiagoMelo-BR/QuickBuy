@@ -8,6 +8,28 @@ import { Usuario } from "../../model/usuario";
 })
 export class UsuarioServico {
   private baseURL: string;
+  private _usuario: Usuario;
+  
+
+  set usuario(usuario: Usuario) {
+    sessionStorage.setItem("usuario-autenticado", JSON.stringify(usuario));
+    this._usuario = usuario;
+  }
+
+  get usuario(): Usuario {
+    let usuario_json = sessionStorage.getItem("usuario-autenticado");
+    this._usuario = JSON.parse(usuario_json);
+    return this._usuario;
+  }
+
+  usuario_autenticado(): boolean {
+    return (this._usuario != null && this.usuario.email != "" && this.usuario.senha != "");
+  }
+
+  limpar_sessao() {
+    sessionStorage.setItem("usuario-autenticado", "");
+    this.usuario = null;
+  }
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.baseURL = baseUrl;
@@ -22,7 +44,7 @@ export class UsuarioServico {
     }
 
     //this.baseURL = raiz do site
-    return this.http.post<Usuario>(this.baseURL + "api/usuario", body, { headers });
+    return this.http.post<Usuario>(this.baseURL + "api/usuario/verificarUsuario", body, { headers });
   }
 
 }

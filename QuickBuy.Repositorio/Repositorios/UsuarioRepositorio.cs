@@ -7,17 +7,15 @@ namespace QuickBuy.Repositorio.Repositorios
 {
     public class UsuarioRepositorio : BaseRepositorio<Usuario>, IUsuarioRepositorio
     {
-        private readonly QuickBuyContexto _quickBuyContexto;
-
         public UsuarioRepositorio(QuickBuyContexto quickBuyContexto) : base(quickBuyContexto)
         {
-            _quickBuyContexto = quickBuyContexto;
+            
         }
 
         public Usuario VerificarUsuario(Usuario usuario)
         {            
-            return _quickBuyContexto
-                .Usuarios
+            return QuickBuyContexto
+                .Usuarios                
                 .ToList()
                 .Where(u => u.Email == usuario.Email && u.Senha == usuario.Senha)
                 .FirstOrDefault();
