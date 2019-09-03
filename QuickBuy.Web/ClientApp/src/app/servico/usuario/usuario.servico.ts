@@ -9,7 +9,10 @@ import { Usuario } from "../../model/usuario";
 export class UsuarioServico {
   private baseURL: string;
   private _usuario: Usuario;
-  
+
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    this.baseURL = baseUrl;
+  }
 
   set usuario(usuario: Usuario) {
     sessionStorage.setItem("usuario-autenticado", JSON.stringify(usuario));
@@ -29,10 +32,6 @@ export class UsuarioServico {
   limpar_sessao() {
     sessionStorage.setItem("usuario-autenticado", "");
     this.usuario = null;
-  }
-
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.baseURL = baseUrl;
   }
 
   public verificarUsuario(usuario: Usuario): Observable<Usuario> {

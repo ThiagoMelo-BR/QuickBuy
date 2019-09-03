@@ -1,0 +1,24 @@
+<h1>Lista de Produtos</h1>
+
+<p>Principais produtos para venda</p>
+
+<p *ngIf="!produtos"><em>Carregando produtos...</em></p>
+
+<table class='table table-striped' *ngIf="produtos">
+  <thead>
+    <tr>
+      <th>Identificador</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of produtos">
+      <td>{{ produto.id }}</td>
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.descricao }}</td>
+      <td>{{ produto.preco }}</td>
+    </tr>
+  </tbody>
+</table>
