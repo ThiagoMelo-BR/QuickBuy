@@ -33,10 +33,14 @@ namespace QuickBuy.Web.Controllers
         public IActionResult Post([FromBody] Usuario usuario)
         {
             try
-            {               
-                _usuarioRepositorio.Adicionar(usuario);
-                return Ok("Usuário adicionado com sucesso!");
+            {
+                if (_usuarioRepositorio.EmailCadastrado(usuario.Email))
+                {
+                    return BadRequest("Usuário já cadastrado!");
+                }
 
+                _usuarioRepositorio.Adicionar(usuario);
+                return Ok(usuario);
             }catch(Exception ex)
             {
                 return BadRequest(ex.ToString());

@@ -5,5 +5,6 @@ namespace QuickBuy.Dominio.Contratos
     public interface IUsuarioRepositorio : IBaseRepositorio<Usuario>
     {
         Usuario VerificarUsuario(Usuario usuario);
+        bool EmailCadastrado(string email);
     }
 }
