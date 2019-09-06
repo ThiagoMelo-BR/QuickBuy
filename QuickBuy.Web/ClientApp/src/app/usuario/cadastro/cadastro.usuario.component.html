@@ -1,10 +1,93 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<form class="form-signin">
 
-</body>
-</html>
+  <h1 class="h3 mb-3 font-weight-normal">Cadastro de usuário</h1>
+  <!--Email-->
+  <label for="inputEmail" class="sr-only">Email</label>
+  <input type="email"
+         id="inputEmail"
+         name="email"
+         #email="ngModel"
+         class="form-control mb-2"
+         [ngClass]="{
+         'is-invalid':email.invalid && (email.dirty || email.touched),
+         'is-valid':email.valid && (email.dirty || email.touched)
+         }"
+         placeholder="Email"
+         [(ngModel)]="usuario.email"
+         email required />
+
+  <div class="invalid-feedback m-2" role="alert" *ngIf="email.invalid && (email.dirty || email.touched)">
+    <div *ngIf="email.errors.required">
+      Email deve ser preechido
+    </div>
+    <div *ngIf="email.errors.email">
+      Email no formato inválido!
+    </div>
+  </div>
+
+  <!--Senha-->
+  <label for="inputPassword" class="sr-only">Senha</label>
+  <input type="password"
+         id="inputSenha"
+         name="senha"
+         #senha="ngModel"
+         class="form-control mb-2"
+         [ngClass]="{
+         'is-invalid':senha.invalid && (senha.dirty || senha.touched),
+         'is-valid': senha.valid && (senha.dirty || senha.touched)
+         }"
+         placeholder="Senha"
+         [(ngModel)]="usuario.senha"
+         required />
+
+  <div class="invalid-feedback mb-2" role="alert" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+    <div *ngIf="senha.errors.required">
+      Senha deve ser preenchida
+    </div>
+  </div>
+
+  <!--Nome-->
+  <label for="inputNome" class="sr-only">Nome</label>
+  <input type="text"
+         id="inputNome"
+         name="nome"
+         #nome="ngModel"
+         class="form-control mb-2"
+         [ngClass]="{
+         'is-invalid':nome.invalid && (nome.dirty || nome.touched),
+         'is-valid':nome.valid && (nome.dirty || nome.touched)
+         }"
+         placeholder="Nome"
+         [(ngModel)]="usuario.nome"
+         required />
+
+  <div class="invalid-feedback m-2" role="alert" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+    <div *ngIf="nome.errors.required">
+      Nome deve ser preechido
+    </div>
+  </div>
+
+  <!--SobreNome-->
+  <label for="inputsobreNome" class="sr-only">Sobre Nome</label>
+  <input type="text"
+         id="inputsobreNome"
+         name="sobreNome"
+         #sobreNome="ngModel"
+         class="form-control mb-2"
+         placeholder="Sobre Nome"
+         [(ngModel)]="usuario.sobreNome"
+         required />
+
+
+  <!--Botão Salvar-->
+  <button class="btn btn-lg btn-primary btn-block mb-2" type="submit" (click)="cadastrarUsuario()">
+    Salvar
+  </button>
+
+  <div><a [routerLink]='["/"]'>Voltar</a></div>
+
+  <div class="alert alert-danger" role="alert" *ngIf="mensagem">
+    {{mensagem}}
+  </div>
+</form>
+
