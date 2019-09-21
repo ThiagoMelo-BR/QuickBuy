@@ -1,25 +1,22 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { Produto } from "../model/produto";
 import { ProdutoServico } from "../servico/produto/produto.servico";
 
 @Component({
   selector: "app-produto",
-  templateUrl: "./produto.componente.html"
-  
+  templateUrl: "./produto.componente.html",
+  styleUrls: ["./produto.componente.css"]
 })
-export class ProdutoComponent { //Padrão PascalCase
-  public produtos: Produto[];
+export class ProdutoComponent implements OnInit {   
 
-  constructor(private produtoServico: ProdutoServico) {
-    this.produtoServico.buscarProdutos().subscribe(
-      result=> {
-        this.produtos = result;
-      },
-      error => {
-        console.log(error.erro);
-      }    
-  )
+  public produto: Produto;
 
+  constructor(private produtoServico: ProdutoServico) {   
+
+  }
+
+  ngOnInit(): void {
+    this.produto = new Produto();
   }
 }
 

@@ -1,24 +1,43 @@
-<h1>Lista de Produtos</h1>
+<form class="form-signin">
 
-<p>Principais produtos para venda</p>
+  <h1 class="titulo">Cadastro de produto</h1>
 
-<p *ngIf="!produtos"><em>Carregando produtos...</em></p>
+  <label for="Nome" class="sr-only">Nome</label>
+  <input type="text"
+         id="inputNome"
+         name="nome"
+         #nome="ngModel"
+         class="form-control mb-2 col-4"         
+         placeholder="Nome"
+         [(ngModel)]="produto.nome"
+         required />  
 
-<table class='table table-striped' *ngIf="produtos">
-  <thead>
-    <tr>
-      <th>Identificador</th>
-      <th>Nome</th>
-      <th>Descrição</th>
-      <th>Preço</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let produto of produtos">
-      <td>{{ produto.id }}</td>
-      <td>{{ produto.nome }}</td>
-      <td>{{ produto.descricao }}</td>
-      <td>{{ produto.preco }}</td>
-    </tr>
-  </tbody>
-</table>
+  <label for="Descricao" class="sr-only">Descrição</label>
+  <input type="text"
+         id="inputDescricao"
+         name="descricao"
+         #nome="ngModel"
+         class="form-control mb-2 col-4"
+         placeholder="Descrição"
+         [(ngModel)]="produto.descricao"         
+         required />
+  
+  <label for="Preco" class="sr-only">Preço</label>
+  <input type="number"
+         id="inputPreco"
+         name="preco"
+         #nome="ngModel"
+         class="form-control mb-2 col-2"         
+         placeholder="Preço"
+         [(ngModel)]="produto.preco"
+         required />
+
+<div class="input-group">
+  <div class="custom-file col-6">
+    <input type="file" class="custom-file-input" id="inputFile"/>
+    <label for="inputFile" class="custom-file-label">Escolha uma foto para o produto</label>
+  </div>
+
+</div>
+
+</form>

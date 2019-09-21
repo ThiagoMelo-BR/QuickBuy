@@ -1,0 +1,7 @@
+.titulo{
+  color:blue
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Selecione a imagem";
+}
