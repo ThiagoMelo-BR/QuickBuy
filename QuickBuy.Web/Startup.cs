@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using QuickBuy.Dominio.Contratos;
 using QuickBuy.Repositorio.Contexto;
 using QuickBuy.Repositorio.Repositorios;
+using Microsoft.SqlServer;
 
 namespace QuickBuy.Web
 {
@@ -32,15 +33,22 @@ namespace QuickBuy.Web
             });
 
             //String de conexão do banco
-            string connectionStrings = Configuration.GetConnectionString("Default");
+            string connectionStrings = Configuration.GetConnectionString("SqlServer");
 
-            //Adicionando o serviço de conexão com o oracle
+            /*Adicionando o serviço de conexão com o oracle
             services.AddDbContext<QuickBuyContexto>(options =>
                                                         //Permite o carregamento automático das entidades relacionadas
                                                         options.UseLazyLoadingProxies()
                                                             .UseOracle(connectionStrings,
                                                                 m => m.MigrationsAssembly("QuickBuy.Repositorio")));
+            */
 
+            services.AddDbContext<QuickBuyContexto>(options =>
+                                                        //Permite o carregamento automático das entidades relacionadas
+                                                        options.UseLazyLoadingProxies()
+                                                            .UseSqlServer(connectionStrings,
+                                                                m => m.MigrationsAssembly("QuickBuy.Web")));
+            
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IPedidoRepositorio,PedidoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();            

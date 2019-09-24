@@ -1,8 +1,8 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Oracle.EntityFrameworkCore.Metadata;
 
-namespace QuickBuy.Repositorio.Migrations
+namespace QuickBuy.Web.Migrations
 {
     public partial class BaseInicial : Migration
     {
@@ -13,7 +13,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
                     Descricao = table.Column<string>(maxLength: 100, nullable: false)
                 },
@@ -27,7 +27,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(nullable: true),
                     Descricao = table.Column<string>(nullable: true),
                     Preco = table.Column<decimal>(nullable: false)
@@ -42,7 +42,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
                     Senha = table.Column<string>(nullable: true),
@@ -58,7 +58,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UsuarioId = table.Column<int>(nullable: false),
                     FormaPagamentoId = table.Column<int>(nullable: false),
                     DataPedido = table.Column<DateTime>(type: "Date", nullable: false),
@@ -73,13 +73,13 @@ namespace QuickBuy.Repositorio.Migrations
                 {
                     table.PrimaryKey("PK_Pedidos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Pedidos_FormasPagamentos",
+                        name: "FK_Pedidos_FormasPagamentos_FormaPagamentoId",
                         column: x => x.FormaPagamentoId,
                         principalTable: "FormasPagamentos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pedidos_Usuarios",
+                        name: "FK_Pedidos_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "Id",
@@ -91,7 +91,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.SequenceHiLo),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PedidoId = table.Column<int>(nullable: false),
                     ProdutoId = table.Column<int>(nullable: false),
                     Quantidade = table.Column<int>(nullable: false)
@@ -100,17 +100,28 @@ namespace QuickBuy.Repositorio.Migrations
                 {
                     table.PrimaryKey("PK_ItensPedido", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ItensPedido_Pedidos",
+                        name: "FK_ItensPedido_Pedidos_PedidoId",
                         column: x => x.PedidoId,
                         principalTable: "Pedidos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ItensPedido_Produtos",
+                        name: "FK_ItensPedido_Produtos_ProdutoId",
                         column: x => x.ProdutoId,
                         principalTable: "Produtos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "FormasPagamentos",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[,]
+                {
+                    { 1, "Não definido", "Não definido" },
+                    { 2, "A vista", "A vista" },
+                    { 3, "Cartão", "Cartão" },
+                    { 4, "Tranferência", "Tranferência" }
                 });
 
             migrationBuilder.CreateIndex(

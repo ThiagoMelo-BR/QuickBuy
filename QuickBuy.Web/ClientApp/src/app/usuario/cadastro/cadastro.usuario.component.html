@@ -80,8 +80,9 @@
 
 
   <!--Botão Salvar-->
-  <button class="btn btn-lg btn-primary btn-block mb-2" type="submit" (click)="cadastrarUsuario()">
+  <button class="btn btn-lg btn-primary btn-block mb-2" type="submit" (click)="cadastrarUsuario()" [disabled]="ativar_spinner">
     Salvar
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
   </button>
 
   <div><a [routerLink]='["/login"]'>Voltar</a></div>
@@ -89,5 +90,10 @@
   <div class="alert alert-danger" role="alert" *ngIf="mensagem">
     {{mensagem}}
   </div>
+
+  <div class="alert alert-success" role="alert" *ngIf="usuarioCadastrado">
+    Usuario cadastrado com sucesso! <a class="alert-link" [routerLink]='["/login"]'>Clique aqui</a> para entrar no sistema com sua conta.
+  </div>
+
 </form>
 

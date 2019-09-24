@@ -13,6 +13,8 @@ export class CadastroUsuarioComponent implements OnInit {
 
   public usuario: Usuario;
   public mensagem: string;
+  public ativar_spinner: boolean;
+  public usuarioCadastrado: boolean;
 
   constructor(private usuarioServico: UsuarioServico, private router: Router) {
 
@@ -23,14 +25,17 @@ export class CadastroUsuarioComponent implements OnInit {
   }
 
   public cadastrarUsuario() {
+    this.ativar_spinner = true;
     this.usuarioServico.cadastrarUsuario(this.usuario)
       .subscribe(
         usuarioJSON => {
-          alert("Usuário cadastrado " + usuarioJSON.nome + " com sucesso!");
-          this.router.navigate(["/login"]);
+          this.mensagem = "";
+          this.usuarioCadastrado = true;
+          this.ativar_spinner = false;
         },
         erro => {
           this.mensagem = erro.error;
+          this.ativar_spinner = false;
         }
       );
       

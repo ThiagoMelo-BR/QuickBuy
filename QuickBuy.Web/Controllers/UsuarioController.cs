@@ -29,7 +29,7 @@ namespace QuickBuy.Web.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("Cadastrar")]
         public IActionResult Post([FromBody] Usuario usuario)
         {
             try

@@ -7,37 +7,64 @@
          id="inputNome"
          name="nome"
          #nome="ngModel"
-         class="form-control mb-2 col-4"         
+         class="form-control mb-2 col-4"
          placeholder="Nome"
          [(ngModel)]="produto.nome"
-         required />  
+         required />
+  <div class="invalid-feedback m-2" role="alert" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+    <div *ngIf="nome.errors.required">
+      Nome deve ser preechido
+    </div>
+  </div>
 
   <label for="Descricao" class="sr-only">Descrição</label>
   <input type="text"
          id="inputDescricao"
          name="descricao"
-         #nome="ngModel"
+         #descricao="ngModel"
          class="form-control mb-2 col-4"
          placeholder="Descrição"
-         [(ngModel)]="produto.descricao"         
+         [(ngModel)]="produto.descricao"
          required />
-  
+  <div class="invalid-feedback m-2" role="alert" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
+    <div *ngIf="descricao.errors.required">
+      Descrição deve ser preechido
+    </div>
+  </div>
+
   <label for="Preco" class="sr-only">Preço</label>
   <input type="number"
          id="inputPreco"
          name="preco"
-         #nome="ngModel"
-         class="form-control mb-2 col-2"         
+         #preco="ngModel"
+         class="form-control mb-2 col-2"
          placeholder="Preço"
          [(ngModel)]="produto.preco"
          required />
-
-<div class="input-group">
-  <div class="custom-file col-6">
-    <input type="file" class="custom-file-input" id="inputFile"/>
-    <label for="inputFile" class="custom-file-label">Escolha uma foto para o produto</label>
+  <div class="invalid-feedback m-2" role="alert" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
+    <div *ngIf="preco.errors.required">
+      Preço deve ser preechido
+    </div>
   </div>
 
-</div>
+  <div class="input-group mb-2">
+    <div class="custom-file col-6">
+      <input type="file" class="custom-file-input" id="inputFile" />
+      <label for="inputFile" class="custom-file-label">Escolha uma foto para o produto</label>
+    </div>
+  </div>
+
+  <button class="btn btn-primary m-2" type="submit" (click)="cadastrarProduto()" [disabled]="ativar_spinner">
+    Salvar
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner"></span>
+  </button>
+
+  <div class="alert alert-danger" role="alert" *ngIf="mensagem">
+    {{mensagem}}
+  </div>
+
+  <div class="alert alert-success" role="alert" *ngIf="produtoCadastrado">
+    Produto cadastrado com sucesso! <a class="alert-link" [routerLink]='["/lista-produto"]'>Clique aqui</a> para acessar os produtos.
+  </div>
 
 </form>
