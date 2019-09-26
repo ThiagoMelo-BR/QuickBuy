@@ -9,6 +9,7 @@ using QuickBuy.Dominio.Contratos;
 using QuickBuy.Repositorio.Contexto;
 using QuickBuy.Repositorio.Repositorios;
 using Microsoft.SqlServer;
+using Microsoft.AspNetCore.Http;
 
 namespace QuickBuy.Web
 {
@@ -25,6 +26,9 @@ namespace QuickBuy.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //Configuração para pegar arquivos do contexto da requisição
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -51,7 +55,8 @@ namespace QuickBuy.Web
             
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IPedidoRepositorio,PedidoRepositorio>();
-            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();            
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

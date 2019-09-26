@@ -4,5 +4,4 @@ export class Usuario {
   email: string;
   senha: string;
   sobreNome: string;
-  pedidos = [];
 }

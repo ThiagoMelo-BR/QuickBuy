@@ -8,7 +8,7 @@ import { Produto } from "../../model/produto";
   providedIn: "root"
 })
 export class ProdutoServico implements OnInit {
-      
+     
   private baseURL: string;
   public produtos: Produto[];
 
@@ -24,22 +24,28 @@ export class ProdutoServico implements OnInit {
     return new HttpHeaders().set('content-type', 'application/json');
   }
 
-  buscarProdutos(): Observable<Produto[]> {
+  public buscarProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(this.baseURL + 'api/produto');
   }
 
-  cadastrar(produto: Produto): Observable<Produto> {
+  public cadastrar(produto: Produto): Observable<Produto> {
 
     return this.http.post<Produto>(this.baseURL + "api/produto/cadastrar",
                                     JSON.stringify(produto),
                                       { headers: this.headers });
   }
 
-  deletar(produto: Produto): Observable<Produto> {
+  public deletar(produto: Produto): Observable<Produto> {
     return this.http.post<Produto>(this.baseURL + "api/produto/deletar",
                                     JSON.stringify(produto),
                                       { headers: this.headers });
   }
 
+  public enviarArquivo(arquivoSelecionado: File): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append("arquivoEnviado", arquivoSelecionado, arquivoSelecionado.name);
+    return this.http.post<boolean>(this.baseURL + "api/produto/enviarArquivo", formData);
+    
+  }
 
 }

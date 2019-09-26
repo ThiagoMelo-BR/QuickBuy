@@ -13,6 +13,7 @@ export class ProdutoComponent implements OnInit {
   public mensagem: string;
   public produtoCadastrado: boolean;
   public ativar_spinner: boolean;
+  public arquivoSelecionado: File;
 
   constructor(private produtoServico: ProdutoServico) {   
 
@@ -24,6 +25,7 @@ export class ProdutoComponent implements OnInit {
       retorno => {        
         this.produtoCadastrado = true;
         this.ativar_spinner = false;
+        this.limparDadosProduto();
       },
 
       erro => {
@@ -31,6 +33,24 @@ export class ProdutoComponent implements OnInit {
         this.ativar_spinner = false;
       }
     )
+  }
+
+  public inputChange(files: FileList) {
+    this.arquivoSelecionado = files.item(0);
+    this.produtoServico.enviarArquivo(this.arquivoSelecionado).subscribe(
+      retorno => {
+        console.log(retorno);
+      },
+      e => {
+        console.log(e.error);
+      }
+    );
+  }
+
+  private limparDadosProduto() {
+    this.produto.nome = "";
+    this.produto.descricao = "";
+    this.produto.preco = 0;
   }
 
   ngOnInit(): void {
