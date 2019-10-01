@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using QuickBuy.Dominio.Contratos;
 using QuickBuy.Dominio.Entidades;
 using System;
+using System.IO;
+using System.Linq;
 
 namespace QuickBuy.Web.Controllers
 {
@@ -52,6 +54,32 @@ namespace QuickBuy.Web.Controllers
 
                 return BadRequest(ex.ToString());
             }
+        }
+
+        [HttpPost("EnviarArquivo")]
+        public IActionResult EnviarArquivo()
+        {
+            try
+            {
+                var formFile = _httpContextAccessor.HttpContext.Request.Form.Files["arquivoEnviado"];
+                var nomeArquivo = formFile.FileName;
+                var extensao = nomeArquivo.Split(".").Last();
+                var arrayNomeCompacto = Path.GetFileNameWithoutExtension(nomeArquivo).Take(10).ToArray();
+                var pastaArquivos = _hostingEnvironment.WebRootPath + "\\arquivos\\";
+                var nomeCompleto = pastaArquivos + nomeArquivo;
+
+                using(var streamArquivo = new FileStream(nomeCompleto, FileMode.Create))
+                {
+                    formFile.CopyTo(streamArquivo);
+                }
+                return Ok("Arquivo envidado com sucesso!");
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.ToString());
+            }
+
         }
     }
 }
