@@ -49,9 +49,10 @@
 
   <div class="input-group mb-2">
     <div class="custom-file col-6">
-      <input type="file" class="custom-file-input" id="inputFile" (change)="inputChange($event.target.files)"/>
+      <input type="file" class="custom-file-input" id="inputFile" (change)="inputChange($event.target.files)" />
       <label for="inputFile" class="custom-file-label">Escolha uma foto para o produto</label>
     </div>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner_imagem"></span>
   </div>
 
   <button class="btn btn-primary m-2" type="submit" (click)="cadastrarProduto()" [disabled]="ativar_spinner">

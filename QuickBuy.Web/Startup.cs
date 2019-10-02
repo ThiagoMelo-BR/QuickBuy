@@ -39,14 +39,6 @@ namespace QuickBuy.Web
             //String de conexão do banco
             string connectionStrings = Configuration.GetConnectionString("SqlServer");
 
-            /*Adicionando o serviço de conexão com o oracle
-            services.AddDbContext<QuickBuyContexto>(options =>
-                                                        //Permite o carregamento automático das entidades relacionadas
-                                                        options.UseLazyLoadingProxies()
-                                                            .UseOracle(connectionStrings,
-                                                                m => m.MigrationsAssembly("QuickBuy.Repositorio")));
-            */
-
             services.AddDbContext<QuickBuyContexto>(options =>
                                                         //Permite o carregamento automático das entidades relacionadas
                                                         options.UseLazyLoadingProxies()

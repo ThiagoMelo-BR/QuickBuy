@@ -72,7 +72,7 @@ namespace QuickBuy.Web.Controllers
                 {
                     formFile.CopyTo(streamArquivo);
                 }
-                return Ok("Arquivo envidado com sucesso!");
+                return Json(novoNomeArquivo);
             }
             catch (Exception e)
             {

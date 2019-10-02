@@ -13,6 +13,7 @@ export class ProdutoComponent implements OnInit {
   public mensagem: string;
   public produtoCadastrado: boolean;
   public ativar_spinner: boolean;
+  public ativar_spinner_imagem: boolean;
   public arquivoSelecionado: File;
 
   constructor(private produtoServico: ProdutoServico) {   
@@ -36,13 +37,18 @@ export class ProdutoComponent implements OnInit {
   }
 
   public inputChange(files: FileList) {
+    this.ativar_spinner_imagem = true;
     this.arquivoSelecionado = files.item(0);
     this.produtoServico.enviarArquivo(this.arquivoSelecionado).subscribe(
-      retorno => {
-        console.log(retorno);
+      nomeArquivo => {
+        this.produto.nomeArquivo = nomeArquivo;
+        alert(this.produto.nomeArquivo);
+        console.log(nomeArquivo);
+        this.ativar_spinner_imagem = false;
       },
       e => {
         console.log(e.error);
+        this.ativar_spinner_imagem = false;
       }
     );
   }
