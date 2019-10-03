@@ -41,8 +41,7 @@ export class ProdutoComponent implements OnInit {
     this.arquivoSelecionado = files.item(0);
     this.produtoServico.enviarArquivo(this.arquivoSelecionado).subscribe(
       nomeArquivo => {
-        this.produto.diretorioImagem = nomeArquivo;
-        alert(this.produto.diretorioImagem);
+        this.produto.diretorioImagem = nomeArquivo;        
         console.log(nomeArquivo);
         this.ativar_spinner_imagem = false;
       },

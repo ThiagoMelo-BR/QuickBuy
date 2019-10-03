@@ -10,6 +10,10 @@
          class="form-control mb-2 col-4"
          placeholder="Nome"
          [(ngModel)]="produto.nome"
+         [ngClass]="{
+          'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+          'is-valid': nome.valid && (nome.dirty || nome.touched)
+         }"
          required />
   <div class="invalid-feedback m-2" role="alert" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
     <div *ngIf="nome.errors.required">
@@ -25,6 +29,10 @@
          class="form-control mb-2 col-4"
          placeholder="Descrição"
          [(ngModel)]="produto.descricao"
+         [ngClass]="{
+          'is-invalid': descricao.invalid && (descricao.dirty || descricao.touched),
+          'is-valid': descricao.valid && (descricao.dirty || descricao.touched)
+         }"
          required />
   <div class="invalid-feedback m-2" role="alert" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
     <div *ngIf="descricao.errors.required">
@@ -40,6 +48,10 @@
          class="form-control mb-2 col-2"
          placeholder="Preço"
          [(ngModel)]="produto.preco"
+                  [ngClass]="{
+          'is-invalid': preco.invalid && (preco.dirty || preco.touched),
+          'is-valid': preco.valid && (preco.dirty || preco.touched)
+         }"
          required />
   <div class="invalid-feedback m-2" role="alert" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
     <div *ngIf="preco.errors.required">
@@ -48,9 +60,9 @@
   </div>
 
   <div class="input-group mb-2">
-    <div class="custom-file col-6">
+    <div class="custom-file col-4">
       <input type="file" class="custom-file-input" id="inputFile" (change)="inputChange($event.target.files)" />
-      <label for="inputFile" class="custom-file-label">Escolha uma foto para o produto</label>
+      <label for="inputFile" class="custom-file-label">Escolha uma foto</label>
     </div>
     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="ativar_spinner_imagem"></span>
   </div>
