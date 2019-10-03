@@ -10,5 +10,7 @@
 
         public decimal Preco { get; set; }
 
+        public string DiretorioImagem { get; set; }
+
     }
 }

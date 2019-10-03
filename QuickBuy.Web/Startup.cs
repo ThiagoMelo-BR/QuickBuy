@@ -43,7 +43,7 @@ namespace QuickBuy.Web
                                                         //Permite o carregamento automático das entidades relacionadas
                                                         options.UseLazyLoadingProxies()
                                                             .UseSqlServer(connectionStrings,
-                                                                m => m.MigrationsAssembly("QuickBuy.Web")));
+                                                                m => m.MigrationsAssembly("QuickBuy.Repositorio")));
             
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IPedidoRepositorio,PedidoRepositorio>();
