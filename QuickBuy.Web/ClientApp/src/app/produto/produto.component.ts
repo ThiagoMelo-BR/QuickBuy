@@ -23,10 +23,10 @@ export class ProdutoComponent implements OnInit {
   public cadastrarProduto() {
     this.ativar_spinner = true;
     this.produtoServico.cadastrar(this.produto).subscribe(
-      retorno => {        
+      retorno => {
+        this.mensagem = "";
         this.produtoCadastrado = true;
-        this.ativar_spinner = false;
-        this.limparDadosProduto();
+        this.ativar_spinner = false;        
       },
 
       erro => {
@@ -50,12 +50,6 @@ export class ProdutoComponent implements OnInit {
         this.ativar_spinner_imagem = false;
       }
     );
-  }
-
-  private limparDadosProduto() {
-    this.produto.nome = "";
-    this.produto.descricao = "";
-    this.produto.preco = 0;
   }
 
   ngOnInit(): void {

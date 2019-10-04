@@ -46,6 +46,11 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
+                produto.Validate();
+                if (!produto.EhValido)
+                {
+                    return BadRequest(produto.RetornarListaMensagem());
+                }
                 _produtoRepositorio.Adicionar(produto);
                 return Created("api/produto", produto);
             }

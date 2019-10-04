@@ -37,10 +37,10 @@ namespace QuickBuy.Dominio.Entidades
             LimparLista();
 
             if (!ItensPedido.Any())            
-                MensagemValidacao.Add("Erro: Pedido sem itens válidos");
+                AdicionarCritica("Erro: Pedido sem itens válidos");
 
             if (string.IsNullOrEmpty(CEP))
-                MensagemValidacao.Add("Erro: O campo CEP deve ser preenchido");
+                AdicionarCritica("Erro: O campo CEP deve ser preenchido");
         }
     }
 }
