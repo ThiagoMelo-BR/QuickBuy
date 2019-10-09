@@ -16,15 +16,19 @@
       <th>Descrição</th>
       <th>Preço</th>
       <th>Diretório Imagem</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let produto of produtos">
       <td>{{ produto.id }}</td>
       <td>{{ produto.nome }}</td>
-      <td>{{ produto.descricao }}</td>
-      <td>{{ produto.preco }}</td>
-      <td>{{ produto.diretorioImagem }}</td>
+      <td style="width:50%"> {{ produto.descricao }}</td>
+      <td style="width:10%">R$ {{ produto.preco }}</td>
+      <td style="width:20%"><img src="../../../../../arquivos/{{ produto.diretorioImagem }}" style="width:40%;height:10%"/></td>
+      <td><a href="#">Editar</a></td>
+      <td><a href="#">Excluir</a></td>
     </tr>
   </tbody>
 </table>

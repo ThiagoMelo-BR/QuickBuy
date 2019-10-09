@@ -15,8 +15,8 @@ export class ListaProdutoComponent { //Padrão PascalCase
       result => {
         this.produtos = result;
       },
-      error => {
-        console.log(error.erro);
+      e => {
+        console.log(e.error);
       }
     )
 
