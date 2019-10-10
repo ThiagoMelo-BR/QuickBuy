@@ -6,13 +6,13 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { ProdutoComponent } from './produto/produto.component';
 import { LoginComponent } from './usuario/login/login.component';
 import { GuardaRotas } from './autorizacao/guarda.rotas';
 import { UsuarioServico } from './servico/usuario/usuario.servico';
 import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
 import { ProdutoServico } from './servico/produto/produto.servico';
-import { ListaProdutoComponent } from './produto/listaproduto.component';
+import { ListaProdutoComponent } from './produto/lista/listaproduto.component';
+import { ProdutoComponent } from './produto/cadastro/produto.component';
 
 @NgModule({
   declarations: [
