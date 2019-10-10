@@ -1,6 +1,8 @@
 import { Component } from "@angular/core"
 import { Produto } from "../model/produto";
 import { ProdutoServico } from "../servico/produto/produto.servico";
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: "app-listaproduto",
@@ -10,7 +12,7 @@ import { ProdutoServico } from "../servico/produto/produto.servico";
 export class ListaProdutoComponent { //Padrão PascalCase
   public produtos: Produto[];
 
-  constructor(private produtoServico: ProdutoServico) {
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
     this.produtoServico.buscarProdutos().subscribe(
       result => {
         this.produtos = result;
@@ -19,6 +21,9 @@ export class ListaProdutoComponent { //Padrão PascalCase
         console.log(e.error);
       }
     )
+  }
 
+  cadastrarProduto() {
+    this.router.navigate(['/produto'])
   }
 }

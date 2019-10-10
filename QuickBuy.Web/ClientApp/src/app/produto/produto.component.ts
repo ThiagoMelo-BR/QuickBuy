@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { Produto } from "../model/produto";
 import { ProdutoServico } from "../servico/produto/produto.servico";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-produto",
@@ -16,7 +17,7 @@ export class ProdutoComponent implements OnInit {
   public ativar_spinner_imagem: boolean;
   public arquivoSelecionado: File;
 
-  constructor(private produtoServico: ProdutoServico) {   
+  constructor(private produtoServico: ProdutoServico, private router: Router) {   
 
   }
 
@@ -54,6 +55,10 @@ export class ProdutoComponent implements OnInit {
 
   ngOnInit(): void {
     this.produto = new Produto();
+  }
+
+  cancelarEdicao() {    
+    this.router.navigate(['/lista-produto']);
   }
 }
 

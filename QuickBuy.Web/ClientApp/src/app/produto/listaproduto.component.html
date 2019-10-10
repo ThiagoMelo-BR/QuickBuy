@@ -4,8 +4,8 @@
 
 <p *ngIf="!produtos"><em>Carregando produtos...</em></p>
 
-<div>
-   <a class="alert-link" [routerLink]='["/produto"]'>Cadastrar produtos</a>
+<div>   
+  <button type="button" class="btn btn-primary" (click)="cadastrarProduto()">Cadastrar Produto</button>
 </div>
 
 <table class='table table-striped' *ngIf="produtos">
