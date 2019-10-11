@@ -41,6 +41,21 @@ namespace QuickBuy.Web.Controllers
             }
         }
 
+        [HttpPost("Deletar")]
+        public IActionResult Deletar([FromBody] Produto produto)
+        {
+            try
+            {
+                _produtoRepositorio.Excluir(produto);
+                return Json(_produtoRepositorio.ObterTodos());
+            }
+            catch (Exception e)
+            {
+
+                return Ok(e.Message.ToString());
+            }
+        }
+
         [HttpPost("Cadastrar")]
         public IActionResult Post([FromBody] Produto produto)
         {

@@ -26,4 +26,19 @@ export class ListaProdutoComponent { //Padrão PascalCase
   cadastrarProduto() {
     this.router.navigate(['/produto'])
   }
+
+  excluirProduto(produto: Produto) {
+    let confirmacao = confirm("Deseja realmente excluir o produto?");
+
+    if (confirmacao == true) {
+      this.produtoServico.deletar(produto).subscribe(
+        sucesso => {
+          this.produtos = sucesso;
+        },
+        erro => {
+          console.log(erro.error);
+        }
+      );
+    }
+  }
 }

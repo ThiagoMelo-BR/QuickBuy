@@ -27,7 +27,8 @@ export class ProdutoComponent implements OnInit {
       retorno => {
         this.mensagem = "";
         this.produtoCadastrado = true;
-        this.ativar_spinner = false;        
+        this.ativar_spinner = false;
+        this.router.navigate(["\lista-produto"]);
       },
 
       erro => {
