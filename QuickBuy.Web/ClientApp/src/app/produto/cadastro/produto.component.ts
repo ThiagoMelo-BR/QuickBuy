@@ -55,7 +55,15 @@ export class ProdutoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.produto = new Produto();
+    let produtoEdicao = sessionStorage.getItem("produtoEdicao");
+
+    if (produtoEdicao) {
+      this.produto = JSON.parse(produtoEdicao);
+    }
+    else
+    {
+      this.produto = new Produto();
+    }    
   }
 
   cancelarEdicao() {    

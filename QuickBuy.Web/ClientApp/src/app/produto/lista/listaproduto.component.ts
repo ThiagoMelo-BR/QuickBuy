@@ -3,7 +3,6 @@ import { Produto } from "../../model/produto";
 import { ProdutoServico } from "../../servico/produto/produto.servico";
 import { Router } from "@angular/router";
 
-
 @Component({
   selector: "app-listaproduto",
   templateUrl: "./listaproduto.component.html"
@@ -23,11 +22,12 @@ export class ListaProdutoComponent { //Padrão PascalCase
     )
   }
 
-  cadastrarProduto() {
+  public cadastrarProduto() {
+    sessionStorage.setItem("produtoEdicao", "");
     this.router.navigate(['/produto'])
   }
 
-  excluirProduto(produto: Produto) {
+  public excluirProduto(produto: Produto) {
     let confirmacao = confirm("Deseja realmente excluir o produto?");
 
     if (confirmacao == true) {
@@ -40,5 +40,10 @@ export class ListaProdutoComponent { //Padrão PascalCase
         }
       );
     }
+  }
+
+  public editarProduto(produto: Produto) {
+    sessionStorage.setItem("produtoEdicao", JSON.stringify(produto));
+    this.router.navigate(["/produto"]);
   }
 }

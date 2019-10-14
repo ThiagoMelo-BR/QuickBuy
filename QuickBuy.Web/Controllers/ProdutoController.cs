@@ -51,7 +51,6 @@ namespace QuickBuy.Web.Controllers
             }
             catch (Exception e)
             {
-
                 return Ok(e.Message.ToString());
             }
         }
@@ -66,8 +65,17 @@ namespace QuickBuy.Web.Controllers
                 {
                     return BadRequest(produto.RetornarListaMensagem());
                 }
-                _produtoRepositorio.Adicionar(produto);
-                return Created("api/produto", produto);
+
+                if(produto.Id > 0)
+                {
+                    _produtoRepositorio.Atualizar(produto);
+                }
+                else
+                {
+                    _produtoRepositorio.Adicionar(produto);
+                }
+
+                return Json(_produtoRepositorio.ObterTodos());
             }
             catch (Exception ex)
             {
