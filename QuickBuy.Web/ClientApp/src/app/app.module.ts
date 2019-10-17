@@ -13,6 +13,7 @@ import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.co
 import { ProdutoServico } from './servico/produto/produto.servico';
 import { ListaProdutoComponent } from './produto/lista/listaproduto.component';
 import { ProdutoComponent } from './produto/cadastro/produto.component';
+import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProdutoComponent } from './produto/cadastro/produto.component';
     ProdutoComponent,
     LoginComponent,
     CadastroUsuarioComponent,
-    ListaProdutoComponent
+    ListaProdutoComponent,
+    LojaPesquisaComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
