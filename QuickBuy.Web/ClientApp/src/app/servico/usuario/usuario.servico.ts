@@ -30,7 +30,7 @@ export class UsuarioServico {
   }
 
   usuario_autenticado(): boolean {
-    return (this._usuario != null && this.usuario.email != "" && this.usuario.senha != "");
+    return (this._usuario != null && this.usuario.email != "" && this.usuario.senha != "");    
   }
 
   limpar_sessao() {
