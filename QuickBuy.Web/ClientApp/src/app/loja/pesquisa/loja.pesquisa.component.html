@@ -1,4 +1,5 @@
-<div class="container">
+<div *ngIf="!produtos">Carregando produtos...</div>
+<div class="container" *ngIf="produtos">
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let p of produtos">
       <div class="card">        
