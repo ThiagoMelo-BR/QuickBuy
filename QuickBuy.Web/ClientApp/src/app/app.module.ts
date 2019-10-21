@@ -20,10 +20,10 @@ import { TruncateModule } from 'ng2-truncate';;
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     NavMenuComponent,
     HomeComponent,
     ProdutoComponent,
-    LoginComponent,
     CadastroUsuarioComponent,
     ListaProdutoComponent,
     LojaPesquisaComponent,
