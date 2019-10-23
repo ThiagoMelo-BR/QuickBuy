@@ -5,13 +5,25 @@ var LojaCarrinhoCompras = /** @class */ (function () {
         this.produtos = [];
     }
     LojaCarrinhoCompras.prototype.adicionar = function (produto) {
+        var existeProdutoNaLista = false;
         var produtoLocalStorage = localStorage.getItem('produtoLocalStorage');
         if (!produtoLocalStorage) {
             this.produtos.push(produto);
         }
         else {
             this.produtos = JSON.parse(produtoLocalStorage);
-            this.produtos.push(produto);
+            //Verificando se o produto existe na lista
+            this.produtos.map(function (val) {
+                if (val.id == produto.id) {
+                    existeProdutoNaLista = true;
+                }
+            });
+            if (existeProdutoNaLista == false) {
+                this.produtos.push(produto);
+            }
+            else {
+                alert('Produto já adicionado ao pedido!');
+            }
         }
         localStorage.setItem('produtoLocalStorage', JSON.stringify(this.produtos));
     };
