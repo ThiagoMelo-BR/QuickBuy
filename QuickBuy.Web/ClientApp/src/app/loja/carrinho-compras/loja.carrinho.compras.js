@@ -6,13 +6,13 @@ var LojaCarrinhoCompras = /** @class */ (function () {
     }
     LojaCarrinhoCompras.prototype.adicionar = function (produto) {
         var existeProdutoNaLista = false;
-        var produtoLocalStorage = localStorage.getItem('produtoLocalStorage');
-        if (!produtoLocalStorage) {
+        var produtosLocalStorage = localStorage.getItem('produtosLocalStorage');
+        if (!produtosLocalStorage) {
             this.produtos.push(produto);
         }
         else {
-            this.produtos = JSON.parse(produtoLocalStorage);
-            //Verificando se o produto existe na lista
+            this.produtos = JSON.parse(produtosLocalStorage);
+            //Verificando se o produto existe na lista      
             this.produtos.map(function (val) {
                 if (val.id == produto.id) {
                     existeProdutoNaLista = true;
@@ -25,15 +25,24 @@ var LojaCarrinhoCompras = /** @class */ (function () {
                 alert('Produto já adicionado ao pedido!');
             }
         }
-        localStorage.setItem('produtoLocalStorage', JSON.stringify(this.produtos));
+        localStorage.setItem('produtosLocalStorage', JSON.stringify(this.produtos));
     };
     LojaCarrinhoCompras.prototype.obterProdutos = function () {
-        var produtoLocalStorage = localStorage.getItem('produtoLocalStorage');
-        if (produtoLocalStorage) {
-            return JSON.parse(produtoLocalStorage);
+        var produtosLocalStorage = localStorage.getItem('produtosLocalStorage');
+        if (produtosLocalStorage) {
+            return JSON.parse(produtosLocalStorage);
         }
     };
     LojaCarrinhoCompras.prototype.removerProduto = function (produto) {
+        var produtosLocalStorage = localStorage.getItem('produtosLocalStorage');
+        if (produtosLocalStorage) {
+            this.produtos = JSON.parse(produtosLocalStorage);
+            this.produtos = this.produtos.filter(function (p) { return p.id != produto.id; });
+            localStorage.setItem('produtosLocalStorage', JSON.stringify(this.produtos));
+        }
+    };
+    LojaCarrinhoCompras.prototype.atualizar = function (produtos) {
+        localStorage.setItem('produtosLocalStorage', JSON.stringify(produtos));
     };
     return LojaCarrinhoCompras;
 }());

@@ -5,23 +5,23 @@ export class LojaCarrinhoCompras {
 
   public adicionar(produto: Produto) {
     var existeProdutoNaLista = false;
-    var produtoLocalStorage = localStorage.getItem('produtoLocalStorage');
+    var produtosLocalStorage = localStorage.getItem('produtosLocalStorage');    
     
-    if (!produtoLocalStorage) {
+    if (!produtosLocalStorage) {
       this.produtos.push(produto);      
     }
     else {
-      this.produtos = JSON.parse(produtoLocalStorage);
+      this.produtos = JSON.parse(produtosLocalStorage);   
 
-     //Verificando se o produto existe na lista
-      
+
+     //Verificando se o produto existe na lista      
       this.produtos.map(val => {
         if (val.id == produto.id) {
           existeProdutoNaLista = true;
         }
       })
 
-      if (existeProdutoNaLista == false) {
+      if (existeProdutoNaLista == false) {        
         this.produtos.push(produto);
       }
       else {
@@ -29,18 +29,28 @@ export class LojaCarrinhoCompras {
         }        
     }
 
-    localStorage.setItem('produtoLocalStorage', JSON.stringify(this.produtos));
+    localStorage.setItem('produtosLocalStorage', JSON.stringify(this.produtos));
   }
 
   public obterProdutos(): Produto[] {
-    var produtoLocalStorage = localStorage.getItem('produtoLocalStorage');
+    var produtosLocalStorage = localStorage.getItem('produtosLocalStorage');
 
-    if (produtoLocalStorage) {
-      return JSON.parse(produtoLocalStorage);
+    if (produtosLocalStorage) {
+      return JSON.parse(produtosLocalStorage);
     }    
   }
 
   public removerProduto(produto: Produto) {
-    
+    var produtosLocalStorage = localStorage.getItem('produtosLocalStorage');
+
+    if (produtosLocalStorage) {
+      this.produtos = JSON.parse(produtosLocalStorage);
+      this.produtos = this.produtos.filter(p => p.id != produto.id);
+      localStorage.setItem('produtosLocalStorage', JSON.stringify(this.produtos));
+    }
+  }
+
+  public atualizar(produtos: Produto[]) {
+    localStorage.setItem('produtosLocalStorage', JSON.stringify(produtos));
   }
 }
