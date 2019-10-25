@@ -25,7 +25,7 @@ export class LojaEfetivarComponent implements OnInit {
 
   }
 
-  public atualizarPreco(produto: Produto, quantidade: number) {
+  public atualizarQuantidade(produto: Produto, quantidade: number) {
     if (!produto.precoOriginal) {
       produto.precoOriginal = produto.preco;
     }
@@ -48,6 +48,6 @@ export class LojaEfetivarComponent implements OnInit {
     this.total = this.produtos.reduce((total, produto) => total + produto.preco, 0);
   }
 
-  
+
 
 }
