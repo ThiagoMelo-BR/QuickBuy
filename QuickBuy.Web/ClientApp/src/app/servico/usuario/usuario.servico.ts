@@ -30,8 +30,12 @@ export class UsuarioServico {
   }
 
   usuario_autenticado(): boolean {
-    return (this._usuario != null && this.usuario.email != "" && this.usuario.senha != "");    
+    return (this._usuario != null && this._usuario.email != "" && this._usuario.senha != "");    
   }
+
+  usuario_EhAdministrador(): boolean {
+    return this.usuario_autenticado() && this._usuario.ehAdministrador;
+}
 
   limpar_sessao() {
     sessionStorage.setItem("usuario-autenticado", "");

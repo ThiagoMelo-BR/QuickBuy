@@ -13,6 +13,8 @@ namespace QuickBuy.Dominio.Entidades
         public string Senha { get; set; }
 
         public string SobreNome { get; set; }
-        
+
+        public bool EhAdministrador { get; set; }
+
     }
 }
