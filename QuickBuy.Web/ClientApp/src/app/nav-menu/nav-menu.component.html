@@ -29,11 +29,11 @@
             </ul>
           </li>
 
-          <!--
-            <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuarioLogado()">
-              <a class="nav-item nav-link text-dark" [routerLink]='["/sair"]' (click)="sair()">Sair</a>
-            </li>
-          -->
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="temItensNoCarrinho()">
+            <a class="nav-link text-dark" [routerLink]='["/loja-efetivar"]'>
+              <img src="../../assets/Imagens/carrinho.png" style="width:30px; height:32px"/>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

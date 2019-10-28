@@ -42,6 +42,11 @@ export class LojaEfetivarComponent implements OnInit {
     this.carrinhoCompras.removerProduto(produto);
     this.produtos = this.carrinhoCompras.obterProdutos();
     this.totalPedido();
+
+    //Direcionar para tela principal caso não exista mais itens no pedido
+    if (this.produtos.length <= 0) {
+      this.router.navigate(['/']);
+    }
   }
 
   public totalPedido() {
