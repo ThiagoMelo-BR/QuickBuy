@@ -7,6 +7,7 @@ var LojaCarrinhoCompras = /** @class */ (function () {
     LojaCarrinhoCompras.prototype.adicionar = function (produto) {
         var existeProdutoNaLista = false;
         var produtosLocalStorage = localStorage.getItem('produtosLocalStorage');
+        produto.quantidade = 1;
         if (!produtosLocalStorage) {
             this.produtos.push(produto);
         }

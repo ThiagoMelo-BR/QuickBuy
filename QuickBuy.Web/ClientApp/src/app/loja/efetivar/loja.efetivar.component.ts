@@ -59,7 +59,12 @@ export class LojaEfetivarComponent implements OnInit {
     this.total = this.produtos.reduce((total, produto) => total + produto.preco, 0);
   }
 
-  public efetivarVenda() {
+  public efetivarVenda() { 
+    if (this.usuarioServico.usuario == null) {
+      alert("Para efetivar uma venda é necessário estar logado no sistema!");
+      return;
+    }
+
     let pedido = this.criarPedido();
     console.log(pedido);
   }

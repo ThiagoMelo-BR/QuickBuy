@@ -7,12 +7,13 @@ export class LojaCarrinhoCompras {
     var existeProdutoNaLista = false;
     var produtosLocalStorage = localStorage.getItem('produtosLocalStorage');
 
+    produto.quantidade = 1;
+
     if (!produtosLocalStorage) {
       this.produtos.push(produto);
     }
     else {
       this.produtos = JSON.parse(produtosLocalStorage);
-
 
       //Verificando se o produto existe na lista      
       this.produtos.map(val => {
