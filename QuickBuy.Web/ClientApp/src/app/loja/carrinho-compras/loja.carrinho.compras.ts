@@ -21,7 +21,7 @@ export class LojaCarrinhoCompras {
         }
       })
 
-      if (existeProdutoNaLista == false) {
+      if (!existeProdutoNaLista) {
         this.produtos.push(produto);
       }
       else {

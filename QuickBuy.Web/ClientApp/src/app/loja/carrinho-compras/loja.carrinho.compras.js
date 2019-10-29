@@ -18,7 +18,7 @@ var LojaCarrinhoCompras = /** @class */ (function () {
                     existeProdutoNaLista = true;
                 }
             });
-            if (existeProdutoNaLista == false) {
+            if (!existeProdutoNaLista) {
                 this.produtos.push(produto);
             }
             else {

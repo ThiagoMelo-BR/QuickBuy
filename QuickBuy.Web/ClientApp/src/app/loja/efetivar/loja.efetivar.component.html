@@ -36,7 +36,8 @@
                 <td style="width:80%"><strong>{{total | currency: 'R$ '}}</strong></td>
               </tr>
             </table>
-            <button style="width:100%" class="btn btn-danger">Efetivar Compra</button>
+            <button style="width:100%" class="btn btn-danger mb-2" (click)="efetivarVenda()">Efetivar Compra</button>
+            <button style="width:100%" class="btn btn-success" [routerLink]='["/"]'>Continuar Comprando</button>
           </div>
         </div>
       </div>
