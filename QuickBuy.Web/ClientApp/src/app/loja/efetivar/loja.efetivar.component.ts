@@ -5,6 +5,7 @@ import { Produto } from "../../model/produto";
 import { Pedido } from "../../model/pedido";
 import { UsuarioServico } from "../../servico/usuario/usuario.servico";
 import { ItemPedido } from "../../model/itempedido";
+import { PedidoServico } from "../../servico/pedido/pedido.servico";
 
 
 @Component({
@@ -19,7 +20,10 @@ export class LojaEfetivarComponent implements OnInit {
   public produtos: Produto[];
   public total: number;
 
-  constructor(private router: Router, private usuarioServico: UsuarioServico) {
+  constructor(private router: Router,
+    private usuarioServico: UsuarioServico,
+    private pedidoServico: PedidoServico
+  ) {
 
   }
 
@@ -62,11 +66,21 @@ export class LojaEfetivarComponent implements OnInit {
   public efetivarVenda() { 
     if (this.usuarioServico.usuario == null) {
       alert("Para efetivar uma venda é necessário estar logado no sistema!");
+      this.router.navigate(['/login']);
       return;
-    }
+    }    
 
-    let pedido = this.criarPedido();
-    console.log(pedido);
+    this.pedidoServico.efetivarVenda(this.criarPedido()).subscribe(
+      pedidoId => {
+        this.produtos = [];
+        this.carrinhoCompras.limparCarrinho();
+        sessionStorage.setItem("pedidoId", JSON.stringify(pedidoId));
+        this.router.navigate(['/confirmacao-pedido']);
+      },
+      e => {
+        console.log(e.error);
+      }
+    )    
   }
 
   public criarPedido(): Pedido{
