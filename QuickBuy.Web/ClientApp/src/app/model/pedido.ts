@@ -12,6 +12,7 @@ export class Pedido {
   endereco: string;
   numeroEndereco: string;
   itensPedido: ItemPedido[];
+  total: number;
 
   constructor() {
     this.dataPedido = new Date();
@@ -19,5 +20,14 @@ export class Pedido {
     this.itensPedido = [];
   }
 }
+
+
+    
+
+  
+
+        
+
+       
 
 

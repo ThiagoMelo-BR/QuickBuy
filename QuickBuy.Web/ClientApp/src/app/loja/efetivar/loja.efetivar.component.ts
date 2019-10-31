@@ -43,7 +43,7 @@ export class LojaEfetivarComponent implements OnInit {
       produto.quantidade = quantidade;
     }
 
-    produto.preco = produto.precoOriginal * quantidade;
+    produto.preco = produto.precoOriginal;
     this.carrinhoCompras.atualizar(this.produtos);
     this.totalPedido();
   }
@@ -60,7 +60,7 @@ export class LojaEfetivarComponent implements OnInit {
   }
 
   public totalPedido() {
-    this.total = this.produtos.reduce((total, produto) => total + produto.preco, 0);
+    this.total = this.produtos.reduce((total, produto) => total + (produto.quantidade * produto.preco), 0);
   }
 
   public efetivarVenda() { 
@@ -70,7 +70,9 @@ export class LojaEfetivarComponent implements OnInit {
       return;
     }    
 
-    this.pedidoServico.efetivarVenda(this.criarPedido()).subscribe(
+    let pedido = this.criarPedido();
+    console.log(pedido);
+    this.pedidoServico.efetivarVenda(pedido).subscribe(
       pedidoId => {
         this.produtos = [];
         this.carrinhoCompras.limparCarrinho();

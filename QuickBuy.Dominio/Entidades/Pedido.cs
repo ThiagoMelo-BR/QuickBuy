@@ -32,6 +32,8 @@ namespace QuickBuy.Dominio.Entidades
 
         public string NumeroEndereco { get; set; }
 
+        public decimal Total => ItensPedido.Sum(i => i.Quantidade * i.Preco);
+
         public override void Validate()
         {
             LimparLista();

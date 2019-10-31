@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core"
+import { Pedido } from "../../model/pedido";
 
 @Component({
   selector: "confirmacao-pedido",
@@ -9,7 +10,6 @@ export class ConfirmacaoPedidoComponent implements OnInit {
   public pedidoId: string;
 
   ngOnInit(): void {
-    this.pedidoId = sessionStorage.getItem("pedidoId");
-    }
-
+    this.pedidoId = sessionStorage.getItem("pedidoId");    
+  }
 }
