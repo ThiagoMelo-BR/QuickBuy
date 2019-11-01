@@ -17,7 +17,7 @@ export class PedidoServico {
     return new HttpHeaders().set('content-type', 'application/json');
   }
 
-  public efetivarVenda(pedido: Pedido): Observable<number> {
-    return this.http.post<number>(this._baseUrl + "api/pedido/EfetivarPedido", JSON.stringify(pedido), { headers: this.headers });
+  public efetivarVenda(pedido: Pedido): Observable<Pedido> {
+    return this.http.post<Pedido>(this._baseUrl + "api/pedido/EfetivarPedido", JSON.stringify(pedido), { headers: this.headers });
   }
 }

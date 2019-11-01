@@ -1,3 +1,5 @@
+import { Pedido } from "./pedido";
+
 export class Usuario {
   id: number;
   nome: string;
@@ -5,4 +7,5 @@ export class Usuario {
   senha: string;
   sobreNome: string;
   ehAdministrador: boolean;
+  pedidos: Pedido[];
 }

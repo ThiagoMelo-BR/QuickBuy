@@ -7,9 +7,14 @@ import { Pedido } from "../../model/pedido";
 })
 export class ConfirmacaoPedidoComponent implements OnInit {
 
-  public pedidoId: string;
+  public pedido: Pedido;
 
   ngOnInit(): void {
-    this.pedidoId = sessionStorage.getItem("pedidoId");    
+    let pedidoRetorno = sessionStorage.getItem("pedidoRetorno");
+
+    if (pedidoRetorno) {
+      this.pedido = JSON.parse(pedidoRetorno); 
+    }
+       
   }
 }

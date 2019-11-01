@@ -16,5 +16,7 @@ namespace QuickBuy.Dominio.Entidades
 
         public bool EhAdministrador { get; set; }
 
+        public virtual ICollection<Pedido> Pedidos { get; set; }
+
     }
 }

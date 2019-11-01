@@ -71,12 +71,12 @@ export class LojaEfetivarComponent implements OnInit {
     }    
 
     let pedido = this.criarPedido();
-    console.log(pedido);
+  
     this.pedidoServico.efetivarVenda(pedido).subscribe(
-      pedidoId => {
+      pedido => {
         this.produtos = [];
         this.carrinhoCompras.limparCarrinho();
-        sessionStorage.setItem("pedidoId", JSON.stringify(pedidoId));
+        sessionStorage.setItem("pedidoRetorno", JSON.stringify(pedido));
         this.router.navigate(['/confirmacao-pedido']);
       },
       e => {

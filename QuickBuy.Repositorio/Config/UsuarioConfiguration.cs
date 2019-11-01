@@ -14,7 +14,7 @@ namespace QuickBuy.Repositorio.Config
 
             //Relacionamento de dados
             //Um usuário pode ter vários pedidos, mas um pedido pode ter apenas um único usuário
-            //builder.HasMany(u => u.Pedidos).WithOne(p => p.Usuario);
+            builder.HasMany(u => u.Pedidos).WithOne(p => p.Usuario);
             
         }
     }

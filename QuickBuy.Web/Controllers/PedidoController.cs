@@ -23,7 +23,7 @@ namespace QuickBuy.Web.Controllers
             try
             {
                 _pedidoRepositorio.Adicionar(pedido);
-                return Json(pedido.Id);
+                return Json(pedido);
             }
             catch (Exception ex)
             {
