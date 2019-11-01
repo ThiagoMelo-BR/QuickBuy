@@ -25,7 +25,7 @@ export class UsuarioServico {
 
   get usuario(): Usuario {
     let usuario_json = sessionStorage.getItem("usuario-autenticado");
-    this._usuario = JSON.parse(usuario_json);
+    this._usuario = JSON.parse(usuario_json);    
     return this._usuario;
   }
 

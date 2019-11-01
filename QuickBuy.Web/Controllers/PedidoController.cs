@@ -31,5 +31,19 @@ namespace QuickBuy.Web.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+
+        [HttpGet("ListarPedidosPorUsuario")]
+        public IActionResult Get(int idUsuario)
+        {
+            try
+            {
+                return Json(_pedidoRepositorio.ObterPedidosPorUsuario(idUsuario));
+            }
+            catch (Exception ex)
+            {
+
+              return BadRequest(ex.ToString());
+            }
+        }
     }
 }

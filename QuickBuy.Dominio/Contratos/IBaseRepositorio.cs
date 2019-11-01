@@ -11,5 +11,7 @@ namespace QuickBuy.Dominio.Contratos
         TEntity ObterPorId(int id);
         IEnumerable<TEntity> ObterTodos();
 
+        
+
     }
 }
