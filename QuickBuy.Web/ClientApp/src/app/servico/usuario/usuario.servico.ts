@@ -10,7 +10,7 @@ export class UsuarioServico {
   private baseURL: string;
   private _usuario: Usuario;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {    
     this.baseURL = baseUrl;
   }
 
@@ -51,4 +51,11 @@ export class UsuarioServico {
     return this.http.post<Usuario>(this.baseURL + "api/usuario/cadastrar", JSON.stringify(usuario), {headers: this.headers});
   }
 
+  public temPedidosUsuario() {
+    if (this.usuario_autenticado()) {
+      return this.usuario.pedidos.length > 0;
+    }
+    
+    
+  }
 }

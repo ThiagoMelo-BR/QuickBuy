@@ -48,4 +48,8 @@ export class NavMenuComponent implements OnInit {
   public temItensNoCarrinho() {
     return this.lojaCarrinho.temItensNoCarrinho();
   }
+
+  public temPedidosUsuario() {
+    return this.usuarioServico.temPedidosUsuario();
+  }
 }

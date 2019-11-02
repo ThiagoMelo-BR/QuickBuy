@@ -7,5 +7,5 @@ export class Usuario {
   senha: string;
   sobreNome: string;
   ehAdministrador: boolean;
-  pedidos: Pedido[];
+  pedidos: Pedido[] = [];
 }

@@ -19,6 +19,7 @@ import { TruncateModule } from 'ng2-truncate';
 import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
 import { PedidoServico } from './servico/pedido/pedido.servico';
 import { ConfirmacaoPedidoComponent } from './loja/confirmacao-pedido/confirmacao.pedido.component';
+import { PedidosUsuarioComponent } from './usuario/pedidos/pedidos.usuario.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ConfirmacaoPedidoComponent } from './loja/confirmacao-pedido/confirmaca
     LojaPesquisaComponent,
     LojaProdutoComponent,
     LojaEfetivarComponent,
-    ConfirmacaoPedidoComponent
+    ConfirmacaoPedidoComponent,
+    PedidosUsuarioComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,7 +49,8 @@ import { ConfirmacaoPedidoComponent } from './loja/confirmacao-pedido/confirmaca
       { path: 'lista-produto', component: ListaProdutoComponent, canActivate: [GuardaRotas] },
       { path: 'loja-produto', component: LojaProdutoComponent  },
       { path: 'loja-efetivar', component: LojaEfetivarComponent },
-      { path: 'confirmacao-pedido', component: ConfirmacaoPedidoComponent } 
+      { path: 'confirmacao-pedido', component: ConfirmacaoPedidoComponent },
+      { path: 'pedidos-usuario', component: PedidosUsuarioComponent }
     ])
   ],
   providers: [UsuarioServico, ProdutoServico, PedidoServico],

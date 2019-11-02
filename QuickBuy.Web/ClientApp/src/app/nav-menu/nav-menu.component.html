@@ -31,9 +31,15 @@
 
           <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="temItensNoCarrinho()">
             <a class="nav-link text-dark" [routerLink]='["/loja-efetivar"]'>
-              <img src="../../assets/Imagens/carrinho.png" style="width:30px; height:32px"/>
+              <img src="../../assets/Imagens/carrinho.png" style="width:30px; height:32px" />
             </a>
           </li>
+
+
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="temPedidosUsuario()">
+            <a class="nav-link text-dark" [routerLink]='["/pedidos-usuario"]'>Meus Pedidos</a>
+          </li>
+
         </ul>
       </div>
     </div>
