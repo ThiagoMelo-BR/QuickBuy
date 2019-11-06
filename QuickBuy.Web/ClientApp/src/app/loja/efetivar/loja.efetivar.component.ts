@@ -20,10 +20,8 @@ export class LojaEfetivarComponent implements OnInit {
   public produtos: Produto[];
   public total: number;
 
-  constructor(private router: Router,
-    private usuarioServico: UsuarioServico,
-    private pedidoServico: PedidoServico
-  ) {
+  constructor(private router: Router, private usuarioServico: UsuarioServico,
+              private pedidoServico: PedidoServico) {
 
   }
 
@@ -77,6 +75,7 @@ export class LojaEfetivarComponent implements OnInit {
         this.produtos = [];
         this.carrinhoCompras.limparCarrinho();
         sessionStorage.setItem("pedidoRetorno", JSON.stringify(pedido));
+        this.usuarioServico.atualizarPedidoLista(pedido);
         this.router.navigate(['/confirmacao-pedido']);
       },
       e => {

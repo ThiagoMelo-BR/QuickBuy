@@ -2,6 +2,7 @@ import { Inject, Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Usuario } from "../../model/usuario";
+import { Pedido } from "../../model/pedido";
 
 @Injectable({
   providedIn: "root"
@@ -55,7 +56,13 @@ export class UsuarioServico {
     if (this.usuario_autenticado()) {
       return this.usuario.pedidos.length > 0;
     }
-    
-    
   }
+
+  public atualizarPedidoLista(pedido: Pedido) {
+    let usuario_json = sessionStorage.getItem("usuario-autenticado");
+    this._usuario = JSON.parse(usuario_json);
+    this._usuario.pedidos.push(pedido);
+    sessionStorage.setItem("usuario-autenticado", JSON.stringify(this._usuario));
+  }   
+  
 }
