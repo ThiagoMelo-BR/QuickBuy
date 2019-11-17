@@ -6,9 +6,9 @@
   <button type="button" class="btn btn-primary mb-2" (click)="cadastrarProduto()">Cadastrar Produto</button>
 </div>
 
-<table class='table table-striped' *ngIf="produtos">
-  <thead>
-    <tr>      
+<table class='table' *ngIf="produtos">
+  <thead class="thead-light">
+    <tr>
       <th>Nome</th>
       <th>Descrição</th>
       <th>Preço</th>
@@ -18,15 +18,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let produto of produtos">      
+    <tr *ngFor="let produto of produtos | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; let i = index">
       <td>{{ produto.nome }}</td>
       <td style="width:50%"> {{ produto.descricao }}</td>
       <td style="width:10%"> {{ produto.preco | currency: 'R$ ' }}</td>
-      <td style="width:20%"><img src="../../../../../arquivos/{{ produto.diretorioImagem }}" style="width:40%;height:10%"/></td>
-      
-        <td><button type="button" class="btn btn-success btn-sm" style="margin-right:4px" (click)="editarProduto(produto)">Editar</button></td>
-        <td><button type="button" class="btn btn-danger btn-sm" (click)="excluirProduto(produto)">Excluir</button></td>
-      
+      <td style="width:20%"><img src="../../../../../arquivos/{{ produto.diretorioImagem }}" style="width:40%;height:10%" /></td>
+      <td><button type="button" class="btn btn-success btn-sm" style="margin-right:4px" (click)="editarProduto(produto)">Editar</button></td>
+      <td><button type="button" class="btn btn-danger btn-sm" (click)="excluirProduto(produto)">Excluir</button></td>
     </tr>
   </tbody>
+  <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>
 </table>

@@ -31,6 +31,7 @@
     <None Remove="ClientApp\src\app\loja\carrinho-compras\loja.carrinho.compras.ts" />
     <None Remove="ClientApp\src\app\loja\confirmacao-pedido\confirmacao.pedido.component.ts" />
     <None Remove="ClientApp\src\app\loja\efetivar\loja.efetivar.component.ts" />
+    <None Remove="ClientApp\src\app\loja\entrega\loja.entrega.component.ts" />
     <None Remove="ClientApp\src\app\loja\pesquisa\loja.pesquisa.component.ts" />
     <None Remove="ClientApp\src\app\loja\produto\loja.produto.component.ts" />
     <None Remove="ClientApp\src\app\model\itempedido.ts" />
@@ -57,6 +58,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\loja\carrinho-compras\loja.carrinho.compras.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\confirmacao-pedido\confirmacao.pedido.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\efetivar\loja.efetivar.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\loja\entrega\loja.entrega.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\pesquisa\loja.pesquisa.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\produto\loja.produto.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\itempedido.ts" />

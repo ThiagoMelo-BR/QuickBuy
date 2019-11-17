@@ -1,0 +1,108 @@
+<h3>Cadastro</h3>
+
+<form>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-md-4">
+
+
+        <div class="form-group">
+          <label class="control-label" for="cep">Cep</label>
+          <input type="text"
+                 class="form-control"                 
+                 id="inputCep"
+                 name="cep"
+                 #cep="ngModel"                 
+                 placeholder="Cep"
+                 [(ngModel)]="pedido.cep"/>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="cidade">Cidade</label>
+          <input type="text"
+                 class="form-control"
+                 id="inputCidade"
+                 name="cidade"
+                 #cidade="ngModel"
+                 [(ngModel)]="pedido.cidade"
+                 placeholder="Cidade" />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="UF">UF</label>
+          <select class="form-control single-select"
+                  id="inputMunicipio"
+                  name="uf"                                    
+                  #uf="ngModel"
+                  [(ngModel)]="pedido.uf">
+
+            <option selected value="">[Selecione o estado]</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="endereco">Endereço</label>
+          <input type="text"
+                 class="form-control"
+                 id="inputEndereco"                 
+                 name="endereco"
+                 #endereco="ngModel"
+                 [(ngModel)]="pedido.endereco"
+                 placeholder="Endereço" />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="control-label" for="número">Número</label>
+          <input type="text"
+                 class="form-control"
+                 id="inputNumero"                 
+                 name="numeroEndereco"
+                 #numeroEndereco="ngModel"
+                 [(ngModel)]="pedido.numeroEndereco"
+                 placeholder="Número" />
+        </div>
+
+        <div class="form-group">
+          <a class="btn btn-primary" [routerLink]='["/"]' style="color:white">
+            Continuar Comprando
+          </a>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success" (click)="efetivarVenda()">
+            Finalizar Pedido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

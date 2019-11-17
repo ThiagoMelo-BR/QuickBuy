@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 })
 export class ListaProdutoComponent { //Padrão PascalCase
   public produtos: Produto[];
+  public paginaAtual = 1;
 
   constructor(private produtoServico: ProdutoServico, private router: Router) {
     this.produtoServico.buscarProdutos().subscribe(

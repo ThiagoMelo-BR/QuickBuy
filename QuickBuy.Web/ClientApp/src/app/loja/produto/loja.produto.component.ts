@@ -6,8 +6,7 @@ import { LojaCarrinhoCompras } from "../carrinho-compras/loja.carrinho.compras";
 
 @Component({
   selector: "app-loja-produto",
-  templateUrl: "/loja.produto.component.html",
-  styleUrls: ["/loja.produto.component.css"]
+  templateUrl: "./loja.produto.component.html"
 })
 
 export class LojaProdutoComponent implements OnInit {
@@ -34,5 +33,9 @@ export class LojaProdutoComponent implements OnInit {
   public comprar() {
     this.carrinhoCompras.adicionar(this.produto);
     this.router.navigate(['/loja-efetivar']);
+  }
+
+  public continuarComprando() {
+    this.router.navigate(['/']);
   }
 }

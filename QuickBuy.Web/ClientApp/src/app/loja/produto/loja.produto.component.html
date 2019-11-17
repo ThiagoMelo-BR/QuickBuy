@@ -6,7 +6,8 @@
       <div class="row mb-2" style="color:dimgray"><h3>{{produto.nome}}</h3></div>
       <div class="row mb-2"><h5>{{produto.descricao}}</h5></div>
       <div class="row mb-2"><h1>{{produto.preco | currency: 'R$ '}}</h1></div>
-      <div class="row"><button (click)="comprar()" class="btn btn-danger btn">Comprar</button> </div>      
+      <div class="row"><button (click)="comprar()" class="btn btn-danger mb-2">Comprar</button> </div>
+      <div class="row"><button (click)="continuarComprando()" class="btn btn-success mb-2">Continuar comprando</button> </div>
     </div>    
   </div>
 

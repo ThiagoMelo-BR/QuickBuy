@@ -20,6 +20,8 @@ import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
 import { PedidoServico } from './servico/pedido/pedido.servico';
 import { ConfirmacaoPedidoComponent } from './loja/confirmacao-pedido/confirmacao.pedido.component';
 import { PedidosUsuarioComponent } from './usuario/pedidos/pedidos.usuario.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { LojaEntregaComponent } from './loja/entrega/loja.entrega.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,15 @@ import { PedidosUsuarioComponent } from './usuario/pedidos/pedidos.usuario.compo
     LojaProdutoComponent,
     LojaEfetivarComponent,
     ConfirmacaoPedidoComponent,
-    PedidosUsuarioComponent
+    PedidosUsuarioComponent,
+    LojaEntregaComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     TruncateModule,
+    NgxPaginationModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },      
@@ -50,7 +54,8 @@ import { PedidosUsuarioComponent } from './usuario/pedidos/pedidos.usuario.compo
       { path: 'loja-produto', component: LojaProdutoComponent  },
       { path: 'loja-efetivar', component: LojaEfetivarComponent },
       { path: 'confirmacao-pedido', component: ConfirmacaoPedidoComponent },
-      { path: 'pedidos-usuario', component: PedidosUsuarioComponent }
+      { path: 'pedidos-usuario', component: PedidosUsuarioComponent },
+      { path: 'loja-entrega', component: LojaEntregaComponent }
     ])
   ],
   providers: [UsuarioServico, ProdutoServico, PedidoServico],

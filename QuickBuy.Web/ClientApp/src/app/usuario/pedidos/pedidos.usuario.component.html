@@ -10,11 +10,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pedido of pedidos">
+    <tr *ngFor="let pedido of pedidos | paginate: { itemsPerPage: 5, currentPage: paginaAtual }; let i = index">
       <td>{{pedido.id}}</td>
       <td>{{pedido.dataPedido | date: 'dd/MM/yyyy'}}</td>
       <td>{{pedido.total | currency: "R$ "}}</td>
       <td><a href="#">Detalhes</a></td>
     </tr>
-  </tbody>
+  </tbody>  
+  <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>  
 </table>

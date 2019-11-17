@@ -10,6 +10,7 @@ import { UsuarioServico } from "../../servico/usuario/usuario.servico";
 
 export class PedidosUsuarioComponent {
   public pedidos: Pedido[];
+  public paginaAtual = 1;
 
   constructor(private usuarioServico: UsuarioServico) {
     this.pedidos = this.usuarioServico.usuario.pedidos;

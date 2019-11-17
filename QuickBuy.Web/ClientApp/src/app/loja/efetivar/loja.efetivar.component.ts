@@ -61,7 +61,8 @@ export class LojaEfetivarComponent implements OnInit {
     this.total = this.produtos.reduce((total, produto) => total + (produto.quantidade * produto.preco), 0);
   }
 
-  public efetivarVenda() { 
+  public dadosParaEntrega() {
+
     if (this.usuarioServico.usuario == null) {
       alert("Para efetivar uma venda é necessário estar logado no sistema!");
       this.router.navigate(['/login']);
@@ -69,30 +70,14 @@ export class LojaEfetivarComponent implements OnInit {
     }    
 
     let pedido = this.criarPedido();
-  
-    this.pedidoServico.efetivarVenda(pedido).subscribe(
-      pedido => {
-        this.produtos = [];
-        this.carrinhoCompras.limparCarrinho();
-        sessionStorage.setItem("pedidoRetorno", JSON.stringify(pedido));
-        this.usuarioServico.atualizarPedidoLista(pedido);
-        this.router.navigate(['/confirmacao-pedido']);
-      },
-      e => {
-        console.log(e.error);
-      }
-    )    
+    sessionStorage.setItem("pedidoDigitacao", JSON.stringify(pedido));    
+    this.router.navigate(['/loja-entrega']);
+    
   }
 
   public criarPedido(): Pedido{
     let pedido = new Pedido();
-
-    pedido.cep = "74.720-190";    
-    pedido.cidade = "Goiânia";
-    pedido.uf = "GO";
-    pedido.endereco = "Avenida Pedro Paulo de Souza Res. Felicitá Apto. 505 Bl. A";
     pedido.formaPagamentoId = 1;
-    pedido.numeroEndereco = "1350";
     pedido.usuarioId = this.usuarioServico.usuario.id;
 
     this.produtos = this.carrinhoCompras.obterProdutos();  
