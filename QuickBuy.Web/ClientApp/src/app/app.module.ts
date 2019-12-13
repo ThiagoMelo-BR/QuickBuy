@@ -22,6 +22,8 @@ import { ConfirmacaoPedidoComponent } from './loja/confirmacao-pedido/confirmaca
 import { PedidosUsuarioComponent } from './usuario/pedidos/pedidos.usuario.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LojaEntregaComponent } from './loja/entrega/loja.entrega.component';
+import { DetalhesPedidoComponent } from './detalhes-pedido/detalhes.pedido.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { LojaEntregaComponent } from './loja/entrega/loja.entrega.component';
     LojaEfetivarComponent,
     ConfirmacaoPedidoComponent,
     PedidosUsuarioComponent,
-    LojaEntregaComponent
+    LojaEntregaComponent,
+    DetalhesPedidoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -55,7 +58,8 @@ import { LojaEntregaComponent } from './loja/entrega/loja.entrega.component';
       { path: 'loja-efetivar', component: LojaEfetivarComponent },
       { path: 'confirmacao-pedido', component: ConfirmacaoPedidoComponent },
       { path: 'pedidos-usuario', component: PedidosUsuarioComponent },
-      { path: 'loja-entrega', component: LojaEntregaComponent }
+      { path: 'loja-entrega', component: LojaEntregaComponent },
+      { path: 'detalhes-pedido', component: DetalhesPedidoComponent }
     ])
   ],
   providers: [UsuarioServico, ProdutoServico, PedidoServico],

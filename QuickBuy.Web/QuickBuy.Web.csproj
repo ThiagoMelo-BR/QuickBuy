@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
+    <None Remove="ClientApp\src\app\detalhes-pedido\detalhes.pedido.component.css" />
+    <None Remove="ClientApp\src\app\detalhes-pedido\detalhes.pedido.component.ts" />
     <None Remove="ClientApp\src\app\loja\carrinho-compras\loja.carrinho.compras.ts" />
     <None Remove="ClientApp\src\app\loja\confirmacao-pedido\confirmacao.pedido.component.ts" />
     <None Remove="ClientApp\src\app\loja\efetivar\loja.efetivar.component.ts" />
@@ -55,6 +57,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\detalhes-pedido\detalhes.pedido.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\carrinho-compras\loja.carrinho.compras.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\confirmacao-pedido\confirmacao.pedido.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\loja\efetivar\loja.efetivar.component.ts" />

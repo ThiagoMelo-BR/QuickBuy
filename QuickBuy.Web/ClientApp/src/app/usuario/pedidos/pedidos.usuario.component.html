@@ -14,8 +14,10 @@
       <td>{{pedido.id}}</td>
       <td>{{pedido.dataPedido | date: 'dd/MM/yyyy'}}</td>
       <td>{{pedido.total | currency: "R$ "}}</td>
-      <td><a href="#">Detalhes</a></td>
+      <td><button type="button" class="btn btn-dark btn-sm" (click)="detalharPedido(pedido)">Detalhar</button></td>
     </tr>
   </tbody>  
   <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo"></pagination-controls>  
 </table>
+
+
