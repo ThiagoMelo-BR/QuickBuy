@@ -39,12 +39,12 @@ namespace QuickBuy.Web
             });
 
             //String de conexão do banco
-            string connectionStrings = Configuration.GetConnectionString("SqlServer");
+            string connectionStrings = Configuration.GetConnectionString("PostgreSql");
 
             services.AddDbContext<QuickBuyContexto>(options =>
                                                         //Permite o carregamento automático das entidades relacionadas
                                                         options.UseLazyLoadingProxies()
-                                                            .UseSqlServer(connectionStrings,
+                                                            .UseNpgsql(connectionStrings,
                                                                 m => m.MigrationsAssembly("QuickBuy.Repositorio")));
             
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();

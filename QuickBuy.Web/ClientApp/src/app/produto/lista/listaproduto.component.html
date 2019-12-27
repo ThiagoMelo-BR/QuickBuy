@@ -1,10 +1,10 @@
 <h1>Lista de Produtos</h1>
 
-<p *ngIf="!produtos"><em>Carregando produtos...</em></p>
-
-<div>   
+<div>
   <button type="button" class="btn btn-primary mb-2" (click)="cadastrarProduto()">Cadastrar Produto</button>
 </div>
+
+<p *ngIf="!produtos"><em>Carregando produtos...</em></p>
 
 <table class='table' *ngIf="produtos">
   <thead class="thead-light">

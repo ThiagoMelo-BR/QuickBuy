@@ -8,7 +8,7 @@ import { Router } from "@angular/router"
 })
 
 export class DetalhesPedidoComponent implements OnInit {
-  private pedido: Pedido;
+  public pedido: Pedido;
 
   ngOnInit(): void {
     let pedidoRetorno = sessionStorage.getItem('pedidoDetalhes');

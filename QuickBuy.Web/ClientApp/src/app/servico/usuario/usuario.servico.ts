@@ -34,7 +34,7 @@ export class UsuarioServico {
     return (this._usuario != null && this._usuario.email != "" && this._usuario.senha != "");    
   }
 
-  usuario_EhAdministrador(): boolean {
+  usuario_EhAdministrador(): boolean {    
     return this.usuario_autenticado() && this._usuario.ehAdministrador;
 }
 

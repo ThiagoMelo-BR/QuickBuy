@@ -1,6 +1,6 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace QuickBuy.Repositorio.Migrations
 {
@@ -13,7 +13,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
                     Descricao = table.Column<string>(maxLength: 100, nullable: false)
                 },
@@ -27,10 +27,11 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Nome = table.Column<string>(nullable: true),
                     Descricao = table.Column<string>(nullable: true),
-                    Preco = table.Column<decimal>(nullable: false)
+                    Preco = table.Column<decimal>(nullable: false),
+                    DiretorioImagem = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,11 +43,12 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
                     Senha = table.Column<string>(nullable: true),
-                    SobreNome = table.Column<string>(nullable: true)
+                    SobreNome = table.Column<string>(nullable: true),
+                    EhAdministrador = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,7 +60,7 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     UsuarioId = table.Column<int>(nullable: false),
                     FormaPagamentoId = table.Column<int>(nullable: false),
                     DataPedido = table.Column<DateTime>(type: "Date", nullable: false),
@@ -91,10 +93,11 @@ namespace QuickBuy.Repositorio.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     PedidoId = table.Column<int>(nullable: false),
                     ProdutoId = table.Column<int>(nullable: false),
-                    Quantidade = table.Column<int>(nullable: false)
+                    Quantidade = table.Column<int>(nullable: false),
+                    Preco = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
