@@ -14,7 +14,9 @@
                  name="cep"
                  #cep="ngModel"                 
                  placeholder="Cep"
-                 [(ngModel)]="pedido.cep"/>
+                 [(ngModel)]="pedido.cep"
+                 (change)="buscarEndereco(cep.value)"
+                 />
         </div>
 
         <div class="form-group">
