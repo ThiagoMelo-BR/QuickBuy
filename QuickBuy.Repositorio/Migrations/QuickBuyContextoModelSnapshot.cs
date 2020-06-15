@@ -144,6 +144,8 @@ namespace QuickBuy.Repositorio.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("Ativo");
+
                     b.Property<bool>("EhAdministrador");
 
                     b.Property<string>("Email")

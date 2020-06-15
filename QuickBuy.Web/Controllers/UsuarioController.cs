@@ -15,12 +15,12 @@ namespace QuickBuy.Web.Controllers
             _usuarioRepositorio = usuarioRepositorio;
         }
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Get()
         {
             try
             {
-                return Ok(_usuarioRepositorio.ObterTodos());
+                return Json(_usuarioRepositorio.ObterTodos());
             }
             catch (Exception ex)
             {

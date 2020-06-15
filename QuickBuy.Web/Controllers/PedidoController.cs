@@ -30,12 +30,12 @@ namespace QuickBuy.Web.Controllers
             }
         }
 
-        [HttpGet("ListarPedidosPorUsuario")]
-        public IActionResult Get(int idUsuario)
+        [HttpPost("ListarPedidosPorUsuario")]
+        public IActionResult Get(Usuario usuario)
         {
             try
             {
-                return Json(_pedidoRepositorio.ObterPedidosPorUsuario(idUsuario));
+                return Json(_pedidoRepositorio.ObterPedidosPorUsuario(usuario.Id));
             }
             catch (Exception ex)
             {

@@ -52,6 +52,10 @@ export class UsuarioServico {
     return this.http.post<Usuario>(this.baseURL + "api/usuario/cadastrar", JSON.stringify(usuario), {headers: this.headers});
   }
 
+  public retornaPedidosPorUsuario(usuario: Usuario): Observable<Pedido[]> {    
+    return this.http.post<Pedido[]>(this.baseURL + "api/pedido/ListarPedidosPorUsuario", JSON.stringify(usuario), { headers: this.headers });
+  }
+
   public temPedidosUsuario() {
     if (this.usuario_autenticado()) {
       return this.usuario.pedidos.length > 0;
@@ -61,7 +65,7 @@ export class UsuarioServico {
   public atualizarPedidoLista(pedido: Pedido) {
     let usuario_json = sessionStorage.getItem("usuario-autenticado");
     this._usuario = JSON.parse(usuario_json);
-    this._usuario.pedidos.push(pedido);
+    this._usuario.pedidos.push(pedido);    
     sessionStorage.setItem("usuario-autenticado", JSON.stringify(this._usuario));
   }   
   

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { Pedido } from "../../model/pedido";
 import { UsuarioServico } from "../../servico/usuario/usuario.servico";
 import { Router } from "@angular/router";
@@ -9,16 +9,22 @@ import { Router } from "@angular/router";
   styleUrls: ["./pedidos.usuario.component.css"]
 })
 
-export class PedidosUsuarioComponent {
+export class PedidosUsuarioComponent implements OnInit {
+
   public pedidos: Pedido[];
   public paginaAtual = 1;
 
-  constructor(private usuarioServico: UsuarioServico, private router: Router) {
+  ngOnInit(): void {
     this.pedidos = this.usuarioServico.usuario.pedidos;
+  }
+
+  constructor(private usuarioServico: UsuarioServico, private router: Router) {
+    
   }
 
   public detalharPedido(pedido: Pedido) {
     sessionStorage.setItem('pedidoDetalhes', JSON.stringify(pedido));
+    alert(JSON.stringify(pedido));
     this.router.navigate(['/detalhes-pedido']);
   }
 

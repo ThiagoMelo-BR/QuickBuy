@@ -18,7 +18,7 @@ export class DetalhesPedidoComponent implements OnInit {
     }    
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router) { 
 
   }
 }

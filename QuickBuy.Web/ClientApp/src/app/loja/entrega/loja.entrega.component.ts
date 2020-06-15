@@ -56,7 +56,6 @@ export class LojaEntregaComponent implements OnInit {
   }
 
   public efetivarVenda() {   
-
     this.pedidoServico.efetivarVenda(this.pedido).subscribe(
       pedido => {
         this.carrinhoCompras.limparCarrinho();

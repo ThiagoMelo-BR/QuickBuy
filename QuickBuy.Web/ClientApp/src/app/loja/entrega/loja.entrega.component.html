@@ -5,18 +5,28 @@
     <div class="panel-body">
       <div class="col-md-4">
 
-
         <div class="form-group">
           <label class="control-label" for="cep">Cep</label>
           <input type="text"
-                 class="form-control"                 
+                 class="form-control"
                  id="inputCep"
                  name="cep"
-                 #cep="ngModel"                 
+                 #cep="ngModel"
                  placeholder="Cep"
                  [(ngModel)]="pedido.cep"
                  (change)="buscarEndereco(cep.value)"
-                 />
+                 [ngClass]="{
+                              'is-invalid': cep.invalid && (cep.dirty || cep.touched),
+                              'is-valid': cep.valid && (cep.dirty || cep.touched)
+                            }"
+                 required />
+
+
+          <div class="invalid-feedback m-2" role="alert" *ngIf="cep.invalid && (cep.dirty || cep.touched)">
+            <div *ngIf="cep.errors.required">
+              Cep deve ser preechido
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
@@ -27,16 +37,33 @@
                  name="cidade"
                  #cidade="ngModel"
                  [(ngModel)]="pedido.cidade"
-                 placeholder="Cidade" />
+                 placeholder="Cidade"
+                 [ngClass]="{
+                              'is-invalid': cidade.invalid && (cidade.dirty || cidade.touched),
+                              'is-valid': cidade.valid && (cidade.dirty || cidade.touched)
+                            }"
+                 required />
+
+          <div class="invalid-feedback m-2" role="alert" *ngIf="cidade.invalid && (cidade.dirty || cidade.touched)">
+            <div *ngIf="cidade.errors.required">
+              Cidade deve ser preechido
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label class="control-label" for="UF">UF</label>
           <select class="form-control single-select"
                   id="inputMunicipio"
-                  name="uf"                                    
+                  name="uf"
                   #uf="ngModel"
+                  [ngClass]="{
+                              'is-invalid': uf.invalid && (uf.dirty || uf.touched),
+                              'is-valid': uf.valid && (uf.dirty || uf.touched)
+                            }"
+                  required
                   [(ngModel)]="pedido.uf">
+
 
             <option selected value="">[Selecione o estado]</option>
             <option value="AC">Acre</option>
@@ -67,17 +94,33 @@
             <option value="SE">Sergipe</option>
             <option value="TO">Tocantins</option>
           </select>
+
+          <div class="invalid-feedback m-2" role="alert" *ngIf="uf.invalid && (uf.dirty || uf.touched)">
+            <div *ngIf="uf.errors.required">
+              UF deve ser preechido
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
           <label class="control-label" for="endereco">Endereço</label>
           <input type="text"
                  class="form-control"
-                 id="inputEndereco"                 
+                 id="inputEndereco"
                  name="endereco"
                  #endereco="ngModel"
                  [(ngModel)]="pedido.endereco"
+                 required
+                 [ngClass]="{
+                              'is-invalid': endereco.invalid && (endereco.dirty || endereco.touched),
+                              'is-valid': endereco.valid && (endereco.dirty || endereco.touched)
+                            }"
                  placeholder="Endereço" />
+          <div class="invalid-feedback m-2" role="alert" *ngIf="endereco.invalid && (endereco.dirty || endereco.touched)">
+            <div *ngIf="endereco.errors.required">
+              Endereço deve ser preechido
+            </div>
+          </div>
         </div>
       </div>
 

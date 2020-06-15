@@ -10,6 +10,7 @@ using QuickBuy.Repositorio.Contexto;
 using QuickBuy.Repositorio.Repositorios;
 using Microsoft.SqlServer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace QuickBuy.Web
 {
@@ -38,6 +39,13 @@ namespace QuickBuy.Web
                 configuration.RootPath = "ClientApp/dist";
             });
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
             //String de conexão do banco
             string connectionStrings = Configuration.GetConnectionString("PostgreSql");
 
@@ -50,7 +58,16 @@ namespace QuickBuy.Web
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IPedidoRepositorio,PedidoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
-            
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddCors();
+
+            services.AddMvc(options =>
+            {
+                options.RespectBrowserAcceptHeader = true; // false by default
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +84,8 @@ namespace QuickBuy.Web
                 app.UseHsts();
             }
 
+            app.UseCors(option => option.AllowAnyOrigin());
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -78,6 +97,8 @@ namespace QuickBuy.Web
                     template: "{controller}/{action=Index}/{id?}");
             });
 
+
+            
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -91,6 +112,7 @@ namespace QuickBuy.Web
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
+
         }
     }
 }
