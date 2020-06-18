@@ -47,6 +47,7 @@ namespace QuickBuy.Web.Controllers
             try
             {
                 _produtoRepositorio.Excluir(produto);
+                ExcluirArquivoFoto(_hostingEnvironment.WebRootPath + "\\arquivos\\" + produto.DiretorioImagem);
                 return Json(_produtoRepositorio.ObterTodos());
             }
             catch (Exception e)
@@ -116,6 +117,14 @@ namespace QuickBuy.Web.Controllers
             var novoNomeArquivo = new string(arrayNomeCompacto).Replace(" ", "-");
             novoNomeArquivo = $"{novoNomeArquivo}_{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Hour}{DateTime.Now.Minute}{DateTime.Now.Second}.{extensao}";
             return novoNomeArquivo;
+        }
+
+        private void ExcluirArquivoFoto(string nomeArquivo)
+        {
+            if (System.IO.File.Exists(nomeArquivo))
+            {
+                System.IO.File.Delete(nomeArquivo);
+            }
         }
     }
 }

@@ -62,11 +62,6 @@ export class UsuarioServico {
     }
   }
 
-  public atualizarPedidoLista(pedido: Pedido) {
-    let usuario_json = sessionStorage.getItem("usuario-autenticado");
-    this._usuario = JSON.parse(usuario_json);
-    this._usuario.pedidos.push(pedido);    
-    sessionStorage.setItem("usuario-autenticado", JSON.stringify(this._usuario));
-  }   
+  
   
 }

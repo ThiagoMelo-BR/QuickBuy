@@ -59,8 +59,7 @@ export class LojaEntregaComponent implements OnInit {
     this.pedidoServico.efetivarVenda(this.pedido).subscribe(
       pedido => {
         this.carrinhoCompras.limparCarrinho();
-        sessionStorage.setItem("pedidoRetorno", JSON.stringify(pedido));
-        this.usuarioServico.atualizarPedidoLista(pedido);
+        sessionStorage.setItem("pedidoRetorno", JSON.stringify(pedido));        
         this.router.navigate(['/confirmacao-pedido']);
       },
       e => {
