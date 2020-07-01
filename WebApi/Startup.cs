@@ -7,6 +7,8 @@ using QuickBuy.Repositorio.Contexto;
 using QuickBuy.Dominio.Contratos;
 using QuickBuy.Repositorio.Repositorios;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace WebApi
 {
@@ -24,6 +26,10 @@ namespace WebApi
         {
             services.AddControllers();
 
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+
             //String de conexão do banco
             string connectionStrings = Configuration.GetConnectionString("PostgreSql");
 
@@ -37,7 +43,8 @@ namespace WebApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, 
+            IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -49,6 +56,8 @@ namespace WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            
 
             app.UseCors(c =>
             {

@@ -22,6 +22,9 @@
             if (string.IsNullOrEmpty(Descricao))
                 AdicionarCritica("Descrição do produto é obrigatório");
 
+            if(Descricao.Length < 50)            
+                AdicionarCritica("A descriação do produto precisa ter ao mínimo 50 caracteres");            
+
             if (Preco <= 0)
                 AdicionarCritica("Preço do produto é obrigatório");              
             
