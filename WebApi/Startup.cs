@@ -35,11 +35,12 @@ namespace WebApi
 
             services.AddDbContext<QuickBuyContexto>(options =>
                                                         //Permite o carregamento automático das entidades relacionadas
-                                                        options.UseLazyLoadingProxies()
-                                                            .UseNpgsql(connectionStrings,
+                                                        //options.UseLazyLoadingProxies()
+                                                            options.UseNpgsql(connectionStrings,
                                                                 m => m.MigrationsAssembly("QuickBuy.Repositorio")));
 
             services.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddTransient<ILogAcessoRepositorio, LogAcessoRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,9 +56,7 @@ namespace WebApi
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
-            
+            app.UseAuthorization();           
 
             app.UseCors(c =>
             {

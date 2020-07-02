@@ -16,6 +16,8 @@ namespace QuickBuy.Repositorio.Contexto
 
         public DbSet<FormaPagamento> FormasPagamentos { get; set; }
 
+        public DbSet<LogAcesso> LogAcessos { get; set; }
+
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +25,7 @@ namespace QuickBuy.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
             modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
             modelBuilder.ApplyConfiguration(new PedidoConfiguration());
+            modelBuilder.ApplyConfiguration(new LogAcessoConfiguration());
 
             base.OnModelCreating(modelBuilder);
 
@@ -30,12 +33,12 @@ namespace QuickBuy.Repositorio.Contexto
 
         public QuickBuyContexto(DbContextOptions options) : base(options)
         {
-            
+             
         }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.EnableSensitiveDataLogging();
+            optionsBuilder.EnableSensitiveDataLogging();            
         }
     }
 }
