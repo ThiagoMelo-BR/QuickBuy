@@ -20,12 +20,11 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult Listar()
+        public IActionResult Listar(DateTime datainicial, DateTime datafinal)
         {
             try
             {
-                
-                return Ok(this.logAcessoRepositorio.ObterTodos());
+                return Ok(this.logAcessoRepositorio.ObterTodos(datainicial, datafinal));
 
             }
             catch (Exception e)
@@ -36,7 +35,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult LogarNoSistema([FromBody] Usuario usuario)
+        public IActionResult RegistrarNoSistema([FromBody] Usuario usuario)
         {
             try
             {
@@ -53,7 +52,7 @@ namespace WebApi.Controllers
 
                 this.logAcessoRepositorio.Adicionar(acesso);
 
-                return Ok("Usuário logado com sucesso!");
+                return Ok(new { retorno = "Usuário logado com sucesso!" });
             }
             catch (Exception e)
             {

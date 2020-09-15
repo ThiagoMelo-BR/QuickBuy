@@ -122,6 +122,6 @@
     </ItemGroup>
   </Target>
 
-  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties clientapp_4angular_1json__JsonSchema="https://jenkins-x.io/schemas/jx-schema.json" appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

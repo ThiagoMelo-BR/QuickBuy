@@ -9,7 +9,7 @@ namespace QuickBuy.Dominio.Contratos
         void Atualizar(TEntity entity);
         void Excluir(TEntity entity);
         TEntity ObterPorId(int id);
-        IEnumerable<TEntity> ObterTodos();
+        abstract IEnumerable<TEntity> ObterTodos();
 
         
 

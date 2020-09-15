@@ -28,12 +28,14 @@ export class LojaEntregaComponent implements OnInit {
 
     let pedidoRetorno = sessionStorage.getItem("pedidoDigitacao");
 
+    
     if (pedidoRetorno) {
       this.pedido = JSON.parse(pedidoRetorno);
     }        
   }
 
   public buscarEndereco(cep: string) {
+
     this.cepServico.buscarEndereco(cep).subscribe(
       endereco => {
         if (endereco.uf != null) {
@@ -66,6 +68,11 @@ export class LojaEntregaComponent implements OnInit {
         console.log(e.error);
       }
     )
+  }
+
+  public continuarComprando() {
+    sessionStorage.setItem("pedidoDigitacao", JSON.stringify(this.pedido));
+    this.router.navigate(['/']);
   }
 
 }

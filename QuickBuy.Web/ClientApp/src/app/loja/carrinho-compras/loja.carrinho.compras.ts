@@ -64,5 +64,7 @@ export class LojaCarrinhoCompras {
 
   public limparCarrinho() {
     localStorage.setItem('produtosLocalStorage', "");
+    sessionStorage.setItem('pedidoDigitacao', "");
+    
   }
 }

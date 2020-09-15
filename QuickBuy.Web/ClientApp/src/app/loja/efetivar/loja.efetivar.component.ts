@@ -69,8 +69,19 @@ export class LojaEfetivarComponent implements OnInit {
       return;
     }    
 
-    let pedido = this.criarPedido();
-    sessionStorage.setItem("pedidoDigitacao", JSON.stringify(pedido));    
+    let pedidoRetorno = sessionStorage.getItem("pedidoDigitacao");
+
+    let pedido = new Pedido();
+
+    if (pedidoRetorno) {
+      pedido = JSON.parse(pedidoRetorno);
+    }
+    else {
+      pedido = this.criarPedido();
+      sessionStorage.setItem("pedidoDigitacao", JSON.stringify(pedido));
+    }
+
+        
     this.router.navigate(['/loja-entrega']);
     
   }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace QuickBuy.Dominio.Entidades
 {
@@ -20,5 +21,9 @@ namespace QuickBuy.Dominio.Entidades
 
         public virtual ICollection<Pedido> Pedidos { get; set; }
 
+        public object Select(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
